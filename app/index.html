@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tracker App · Football Research Desk</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<link rel="icon" href="../brand/mark.svg">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="../index.html"><div class="mark">FRD</div><div><strong>FRD</strong><span>YOUR BOOK</span></div></a>
+    <button class="menu-btn" type="button" aria-label="Menu">&#9776;</button>
+    <nav class="links">
+      <a href="../index.html">Site</a>
+      <button type="button" data-view="dashboard">Desk</button>
+      <button type="button" data-view="bets">Bets</button>
+      <button type="button" data-view="flyer">Flyer</button>
+      <button type="button" data-view="settings">Settings</button>
+      <button type="button" id="logout">Log out</button>
+    </nav>
+  </div>
+</header>
+<div id="gate">
+  <section class="hero"><div class="wrap">
+    <p class="kicker">Your book</p>
+    <h1>Log the number. Grade it after.</h1>
+    <p>Same math as the FRD spreadsheet. Your tickets only. The desk card stays separate.</p>
+  </div></section>
+  <main><div class="wrap"><div class="auth">
+    <p class="note" id="cloud-note"></p>
+    <label>Name</label><input id="disp" placeholder="What we call you">
+    <label>Email</label><input id="email" type="email" autocomplete="username">
+    <label>Password</label><input id="pass" type="password" autocomplete="current-password">
+    <label class="check"><input id="age" type="checkbox"> I am 21 or older. This is a research book, not betting advice.</label>
+    <div class="row">
+      <button class="btn navy" type="button" id="go-login">Log in</button>
+      <button class="btn" type="button" id="go-signup">Create book</button>
+    </div>
+  </div></div></main>
+</div>
+<div id="app" class="hidden">
+  <section class="hero"><div class="wrap">
+    <p class="kicker"><span id="mode"></span></p>
+    <h1 id="who">Desk</h1>
+    <p>Paper unit <span id="unit-label">$25</span>. Flyer stays off the record at the top.</p>
+  </div></section>
+  <main><div class="wrap">
+    <section id="dash">
+      <div class="statrow">
+        <div class="stat"><span>Tickets</span><b id="s-n">0</b></div>
+        <div class="stat"><span>Record</span><b id="s-rec">0–0</b><div class="note" id="s-pending"></div></div>
+        <div class="stat"><span>Units</span><b id="s-u">0</b></div>
+        <div class="stat"><span>Profit</span><b id="s-p">$0</b></div>
+      </div>
+      <div class="card"><h2>How this book works</h2><p class="note">Log a lean. Leave it PENDING. Mark W, L, or P when the game is final. American odds. Stake = unit size × units. The Flyer tab does not feed these boxes.</p></div>
+    </section>
+    <section id="bets" class="hidden">
+      <div class="row"><button class="btn" type="button" id="add-bet">Add ticket</button></div>
+      <div id="form-wrap" class="card hidden"></div>
+      <div id="bet-list"></div>
+    </section>
+    <section id="flyer" class="hidden">
+      <p class="banner">The Flyer is a long shot book. It does not change the record on Desk.</p>
+      <div class="row"><button class="btn" type="button" id="add-flyer">Add flyer</button></div>
+      <div id="flyer-form-wrap" class="card hidden"></div>
+      <div id="flyer-list"></div>
+    </section>
+    <section id="settings" class="hidden">
+      <div class="card">
+        <h2>Unit size</h2>
+        <label>Dollars per 1u</label>
+        <input id="unit-input" type="number" min="1" step="1">
+        <div class="row" style="margin-top:12px"><button class="btn navy" type="button" id="save-unit">Save unit</button></div>
+        <p class="note">Changing the unit does not rewrite old stakes. New rows use the new size.</p>
+      </div>
+    </section>
+  </div></main>
+</div>
+<footer class="site"><div class="wrap"><strong>FRD</strong> · Confirm the number. · Not betting advice. 21+.</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body></html>
