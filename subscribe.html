@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get the Desk · Football Research Desk</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="icon" href="brand/mark.svg">
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+<a class="brand" href="index.html"><img src="brand/mark.svg" alt="FRD"><div><strong>FRD</strong><br><span>FOOTBALL RESEARCH DESK</span></div></a>
+<nav><a href="index.html">Home</a><a href="method.html">Method</a><a href="archive.html">Archive</a><a href="tracker.html">Tracker</a><a class="active" href="subscribe.html">Get the Desk</a></nav>
+</div></header>
+<section class="hero"><div class="wrap">
+<p class="kicker">This week lives here</p>
+<h1>Get the Desk.</h1>
+<p>After Dark Thursday. Friday Packet. Gameday Update Saturday and Sunday. Tuesday Grade after it settles.</p>
+</div></section>
+<main><div class="wrap">
+<form class="signup" id="frd-form" action="mailto:bingersoll98@gmail.com?subject=FRD%20list%20request" method="post" enctype="text/plain">
+<h2>Request the list</h2>
+<p class="muted">Prototype. The live send is still a private Gmail BCC. This form opens an email to the desk so we can add you by hand.</p>
+<label for="name">Name</label>
+<input id="name" name="name" type="text" required placeholder="Your name">
+<label for="email">Email</label>
+<input id="email" name="email" type="email" required placeholder="you@email.com">
+<label class="check"><input type="checkbox" required> I am 21 or older and I know this is research, not betting advice.</label>
+<button class="btn navy" type="submit">Request access</button>
+<p class="note" id="thanks" hidden>If your mail app opened, send it. If it didn’t, email bingersoll98@gmail.com with the subject “FRD list request.”</p>
+</form>
+</div></main>
+<footer class="site"><div class="wrap"><strong>FRD</strong> · Confirm the number. · Not betting advice. 21+.</div></footer>
+<script>document.getElementById("frd-form").addEventListener("submit",function(){document.getElementById("thanks").hidden=false;});</script>
+</body></html>
