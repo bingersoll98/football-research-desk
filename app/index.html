@@ -3,27 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tracker App · Football Research Desk</title>
+<title>Tracker · Football Research Desk</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="app.css?v=3">
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="app.css?v=5">
 <link rel="icon" href="../brand/mark.svg">
 </head>
 <body>
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="../index.html"><div class="mark">FRD</div><div><strong>FRD</strong><span>YOUR BOOK</span></div></a>
-    <button class="menu-btn" type="button" aria-label="Menu">&#9776;</button>
+    <a class="brand" href="../index.html">
+      <img src="../brand/mark.svg" alt="FRD">
+      <div><strong>FRD</strong><span class="full">FOOTBALL RESEARCH DESK</span></div>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-label="Menu">&#9776;</button>
     <nav class="links">
-      <a href="../index.html">Site</a>
-      <button type="button" data-view="dashboard">Desk</button>
-      <button type="button" data-view="bets">Bets</button>
-      <button type="button" data-view="settings">Settings</button>
-      <button type="button" id="logout">Log out</button>
+      <a href="../index.html">Home</a>
+      <a href="../method.html">Method</a>
+      <a href="../archive.html">Archive</a>
+      <a class="active" href="index.html">Tracker</a>
+      <a href="../subscribe.html">Get the Desk</a>
     </nav>
   </div>
 </header>
 <div id="gate">
-  <section class="hero"><div class="wrap"><p class="kicker">Your book</p><h1>Log the number. Grade it after.</h1><p>Desk leans and your tickets in one book.</p></div></section>
+  <section class="hero"><div class="wrap">
+    <p class="kicker">Your book</p>
+    <h1>Log the number. Grade it after.</h1>
+    <p>Desk leans and your tickets in one book.</p>
+  </div></section>
   <main><div class="wrap"><div class="auth">
     <p class="note" id="cloud-note"></p>
     <label>Name</label><input id="disp">
@@ -34,7 +42,19 @@
   </div></div></main>
 </div>
 <div id="app" class="hidden">
-  <section class="hero"><div class="wrap"><p class="kicker"><span id="mode"></span></p><h1 id="who">Desk</h1><p>Paper unit <span id="unit-label">$25</span>. One log for every ticket.</p></div></section>
+  <div class="book-sub">
+    <div class="wrap">
+      <button type="button" data-view="dashboard">Desk</button>
+      <button type="button" data-view="bets">Bets</button>
+      <button type="button" data-view="settings">Settings</button>
+      <button type="button" id="logout">Log out</button>
+    </div>
+  </div>
+  <section class="hero"><div class="wrap">
+    <p class="kicker"><span id="mode"></span></p>
+    <h1 id="who">Desk</h1>
+    <p>Paper unit <span id="unit-label">$25</span>.</p>
+  </div></section>
   <main><div class="wrap">
     <section id="dash">
       <div class="statrow">
@@ -63,7 +83,8 @@
 </div>
 <footer class="site"><div class="wrap"><strong>FRD</strong> · Confirm the number. · Not betting advice. 21+.</div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js?v=4"></script>
+<script src="../js/nav.js"></script>
+<script src="config.js?v=5"></script>
 <script src="card.js"></script>
-<script src="app.js?v=4"></script>
+<script src="app.js?v=5"></script>
 </body></html>
