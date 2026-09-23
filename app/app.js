@@ -2,7 +2,7 @@
   const KEY = "frd_app_v1";
   const cfg = window.FRD_CONFIG || {};
   const cloud = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
-  let sb = null, session = null, view = "dashboard", deskCard = { plays: [] }, betFilter = "all";
+  let sb = null, session = null, view = "dashboard", deskCard = window.FRD_CARD || { plays: [] }, betFilter = "all";
   const $ = (id) => document.getElementById(id);
   const uid = () => Math.random().toString(36).slice(2) + Date.now().toString(36);
   function emptyBook() { return { unit: 25, bets: [] }; }
@@ -20,13 +20,6 @@
   }
   function loadLocal() { try { return JSON.parse(localStorage.getItem(KEY)) || { users: {}, session: null }; } catch { return { users: {}, session: null }; } }
   function saveLocal(db) { localStorage.setItem(KEY, JSON.stringify(db)); }
-  async function hashPass(email, pass, salt) {
-    const enc = new TextEncoder();
-    const useSalt = salt || crypto.getRandomValues(new Uint8Array(16));
-    const key = await crypto.subtle.importKey("raw", enc.encode(pass + email.toLowerCase()), "PBKDF2", false, ["deriveBits"]);
-    const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", iterations: 120000, salt: useSalt }, key, 256);
-    return { salt: btoa(String.fromCharCode(...new Uint8Array(useSalt))), hash: btoa(String.fromCharCode(...new Uint8Array(bits))) };
-  }
   function num(n) { const x = Number(n); return Number.isFinite(x) ? x : 0; }
   function settle(row) {
     const stake = num(row.stake), units = num(row.units), odds = num(row.odds), st = row.status || "PENDING";
@@ -50,11 +43,18 @@
   function unitsTxt(n) { if (n === "" || n == null) return "—"; const x = num(n); return (x >= 0 ? "+" : "") + x.toFixed(2) + "u"; }
   function recTxt(s) { return s.w + "–" + s.l + (s.p ? "–" + s.p : ""); }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&":"&","<":"<",">":">",'"':'"',"'":"&#39;" }[c])); }
+  async function hashPass(email, pass, salt) {
+    const enc = new TextEncoder();
+    const useSalt = salt || crypto.getRandomValues(new Uint8Array(16));
+    const key = await crypto.subtle.importKey("raw", enc.encode(pass + email.toLowerCase()), "PBKDF2", false, ["deriveBits"]);
+    const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", iterations: 120000, salt: useSalt }, key, 256);
+    return { salt: btoa(String.fromCharCode(...new Uint8Array(useSalt))), hash: btoa(String.fromCharCode(...new Uint8Array(bits))) };
+  }
   async function currentBook() {
     if (!session) return emptyBook();
     if (!cloud) return mergeBook(session.book || emptyBook());
     const { data, error } = await sb.from("books").select("data").eq("user_id", session.id).maybeSingle();
-    if (error) { console.warn(error); return emptyBook(); }
+    if (error) return emptyBook();
     return mergeBook((data && data.data) || emptyBook());
   }
   async function writeBook(book) {
@@ -104,13 +104,12 @@
   function rowForm(kind, existing) {
     const r = existing || { week: "", date: "", league: "NFL", game: "", play: "", type: "Spread", nickname: "", odds: "-110", book: "Fanatics", units: "1", status: "PENDING", result: "", source: "", frdPick: false, flyer: false };
     return `<div class="grid3"><div><label>Week</label><input id="f-week" value="${esc(r.week)}"></div><div><label>Date</label><input id="f-date" type="date" value="${esc(r.date)}"></div><div><label>League</label><select id="f-league"><option${r.league==="NFL"?" selected":""}>NFL</option><option${r.league==="CFB"?" selected":""}>CFB</option></select></div></div>
-      <label>Game</label><input id="f-game" value="${esc(r.game)}">
-      <label>Play</label><input id="f-play" value="${esc(r.play)}">
+      <label>Game</label><input id="f-game" value="${esc(r.game)}"><label>Play</label><input id="f-play" value="${esc(r.play)}">
       <div class="grid3"><div><label>Type</label><select id="f-type">${["Spread","Total","Moneyline","Prop"].map(t=>`<option${r.type===t?" selected":""}>${t}</option>`).join("")}</select></div><div><label>Odds</label><input id="f-odds" value="${esc(r.odds)}"></div><div><label>Units</label><input id="f-units" value="${esc(r.units)}"></div></div>
       <div class="grid2"><div><label>Book</label><input id="f-book" value="${esc(r.book)}"></div><div><label>Source</label><input id="f-source" value="${esc(r.source)}"></div></div>
-      <label>Nickname</label><input id="f-nick" value="${esc(r.nickname)}" placeholder="optional">
+      <label>Nickname</label><input id="f-nick" value="${esc(r.nickname)}">
       <label class="check"><input id="f-frd" type="checkbox"${r.frdPick?" checked":""}> FRD Pick</label>
-      <label class="check"><input id="f-flyer" type="checkbox"${r.flyer?" checked":""}> Flyer — long-shot dart</label>
+      <label class="check"><input id="f-flyer" type="checkbox"${r.flyer?" checked":""}> Flyer</label>
       <div class="grid2"><div><label>Status</label><select id="f-status">${["PENDING","W","L","P"].map(s=>`<option${r.status===s?" selected":""}>${s}</option>`).join("")}</select></div><div><label>Result</label><input id="f-result" value="${esc(r.result)}"></div></div>
       <div class="row" style="margin-top:14px"><button class="btn navy" type="button" id="save-row">${existing?"Save":"Add to book"}</button><button class="btn ghost" type="button" id="cancel-row">Cancel</button></div>`;
   }
@@ -127,19 +126,20 @@
   function onBook(rows, play) { return rows.some((r) => r.game === play.game && r.play === play.play); }
   function renderDesk(book) {
     const meta = $("card-meta"), box = $("desk-card"); if (!meta || !box) return;
-    meta.textContent = (deskCard.label || "This week") + (deskCard.updated ? " · " + deskCard.updated : "") + (deskCard.note ? " — " + deskCard.note : "");
-    const plays = deskCard.plays || [];
+    if (!deskCard.plays || !deskCard.plays.length) deskCard = window.FRD_CARD || deskCard;
+    meta.textContent = (deskCard.label || "This week") + (deskCard.updated ? " · " + deskCard.updated : "");
+    const plays = (deskCard && deskCard.plays) || [];
     if (!plays.length) { box.innerHTML = `<p class="note">No published leans yet.</p>`; return; }
     box.innerHTML = plays.map((p) => {
       const board = (p.board || "LEAN").toUpperCase();
       const cls = board === "PASS" ? "pass" : board === "FLYER" ? "flyer" : "lean";
-      const taken = onBook(book.bets, p);
+      const taken = onBook((book && book.bets) || [], p);
       const btn = !p.addable ? `<span class="note">Not a ticket</span>` : taken ? `<span class="note">On your book</span>` : `<button class="btn sm" type="button" data-add-desk="${esc(p.id)}">Add to book</button>`;
-      return `<div class="desk-play ${board==="PASS"?"pass":""}"><div><span class="pill ${cls}">${esc(board)}</span> <span class="tag">${esc(p.league)} · ${esc(p.source || "")}</span><div><strong>${esc(p.play)}</strong> ${p.odds?esc(p.odds):""}</div><div class="note">${esc(p.game)}${p.nickname?" · "+esc(p.nickname):""}${p.why?" — "+esc(p.why):""}</div></div><div>${btn}</div></div>`;
+      return `<div class="desk-play ${board==="PASS"?"pass":""}"><div><span class="pill ${cls}">${esc(board)}</span> <span class="tag">${esc(p.league)} · ${esc(p.source || "")}</span><div><strong>${esc(p.play)}</strong> ${p.odds ? esc(p.odds) : ""}</div><div class="note">${esc(p.game)}${p.nickname ? " · " + esc(p.nickname) : ""}${p.why ? " — " + esc(p.why) : ""}</div></div><div>${btn}</div></div>`;
     }).join("");
   }
   async function addDeskPlay(id) {
-    const play = (deskCard.plays || []).find((p) => p.id === id); if (!play || !play.addable) return;
+    const play = ((deskCard && deskCard.plays) || []).find((p) => p.id === id); if (!play || !play.addable) return;
     const book = await currentBook(); if (onBook(book.bets, play)) return;
     const units = 1;
     book.bets.unshift({ id: uid(), week: play.week || "", date: play.date || "", league: play.league || "", game: play.game || "", play: play.play || "", type: play.type || "Spread", odds: String(play.odds || "").replace("+", ""), book: "FRD", units, stake: +(book.unit * units).toFixed(2), status: "PENDING", result: "", source: play.source || "Desk", nickname: play.nickname || "", frdPick: true, flyer: play.tab === "flyer" || /flyer/i.test(play.board || play.source || ""), deskId: play.id });
@@ -148,12 +148,12 @@
   async function render() {
     const book = await currentBook();
     const all = stats(book.bets), frd = stats(book.bets.filter((r) => r.frdPick)), mine = stats(book.bets.filter((r) => !r.frdPick));
-    $("who").textContent = session.name || session.email;
-    $("mode").textContent = cloud ? "Cloud book" : "This-browser prototype";
+    if ($("who")) $("who").textContent = session.name || session.email;
+    if ($("mode")) $("mode").textContent = cloud ? "Cloud book" : "This-browser prototype";
     if (view === "flyer") view = "bets";
-    $("dash").classList.toggle("hidden", view !== "dashboard");
-    $("bets").classList.toggle("hidden", view !== "bets");
-    $("settings").classList.toggle("hidden", view !== "settings");
+    if ($("dash")) $("dash").classList.toggle("hidden", view !== "dashboard");
+    if ($("bets")) $("bets").classList.toggle("hidden", view !== "bets");
+    if ($("settings")) $("settings").classList.toggle("hidden", view !== "settings");
     document.querySelectorAll("[data-view]").forEach((el) => el.classList.toggle("active", el.getAttribute("data-view") === view));
     if ($("s-rec")) $("s-rec").textContent = recTxt(all);
     if ($("s-pending")) $("s-pending").textContent = all.pending + " pending";
@@ -173,7 +173,11 @@
   function showGate() { $("gate").classList.remove("hidden"); $("app").classList.add("hidden"); if ($("cloud-note")) $("cloud-note").textContent = cloud ? "Accounts sync on any phone once you log in." : "Prototype mode: your book stays in this browser until a free Supabase project is connected."; }
   function showApp() { $("gate").classList.add("hidden"); $("app").classList.remove("hidden"); view = "dashboard"; render(); }
   async function boot() {
-    try { const res = await fetch("card.json", { cache: "no-store" }); if (res.ok) deskCard = await res.json(); } catch (e) {}
+    if (window.FRD_CARD && window.FRD_CARD.plays) deskCard = window.FRD_CARD;
+    try {
+      const res = await fetch("/football-research-desk/app/card.json", { cache: "no-store" });
+      if (res.ok) { const fresh = await res.json(); if (fresh && fresh.plays && fresh.plays.length) deskCard = fresh; }
+    } catch (e) {}
     if (cloud && window.supabase) {
       sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
       const { data } = await sb.auth.getSession();
