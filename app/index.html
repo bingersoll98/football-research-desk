@@ -17,14 +17,13 @@
       <a href="../index.html">Site</a>
       <button type="button" data-view="dashboard">Desk</button>
       <button type="button" data-view="bets">Bets</button>
-      <button type="button" data-view="flyer">Flyer</button>
       <button type="button" data-view="settings">Settings</button>
       <button type="button" id="logout">Log out</button>
     </nav>
   </div>
 </header>
 <div id="gate">
-  <section class="hero"><div class="wrap"><p class="kicker">Your book</p><h1>Log the number. Grade it after.</h1><p>Desk card this week. Your book underneath.</p></div></section>
+  <section class="hero"><div class="wrap"><p class="kicker">Your book</p><h1>Log the number. Grade it after.</h1><p>Desk leans and your tickets in one book.</p></div></section>
   <main><div class="wrap"><div class="auth">
     <p class="note" id="cloud-note"></p>
     <label>Name</label><input id="disp">
@@ -35,7 +34,7 @@
   </div></div></main>
 </div>
 <div id="app" class="hidden">
-  <section class="hero"><div class="wrap"><p class="kicker"><span id="mode"></span></p><h1 id="who">Desk</h1><p>Paper unit <span id="unit-label">$25</span>. Flyer stays off the record.</p></div></section>
+  <section class="hero"><div class="wrap"><p class="kicker"><span id="mode"></span></p><h1 id="who">Desk</h1><p>Paper unit <span id="unit-label">$25</span>. One log for every ticket.</p></div></section>
   <main><div class="wrap">
     <section id="dash">
       <div class="statrow">
@@ -55,12 +54,6 @@
       </div>
       <div id="form-wrap" class="card hidden"></div>
       <div id="bet-list"></div>
-    </section>
-    <section id="flyer" class="hidden">
-      <p class="banner">The Flyer is a long shot book. It does not change the record on Desk.</p>
-      <div class="row"><button class="btn" type="button" id="add-flyer">Add flyer</button></div>
-      <div id="flyer-form-wrap" class="card hidden"></div>
-      <div id="flyer-list"></div>
     </section>
     <section id="settings" class="hidden">
       <div class="card"><h2>Unit size</h2><label>Dollars per 1u</label><input id="unit-input" type="number" min="1">
