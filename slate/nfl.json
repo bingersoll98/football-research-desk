@@ -1,0 +1,23 @@
+{
+  "league": "NFL", "week": 3, "label": "NFL Week 3",
+  "updated": "Wed Sep 23, 2026 · consensus snapshot",
+  "note": "All 16 games. Lines move. Click a side or total to put 1u on your book.",
+  "games": [
+    {"id":"nfl-w3-atl-gb","date":"2026-09-24","kick":"Thu 8:15 ET","tv":"Prime","away":"Atlanta","home":"Green Bay","spreadTeam":"Green Bay","spread":-5.5,"total":42.5},
+    {"id":"nfl-w3-lac-buf","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"FOX","away":"LA Chargers","home":"Buffalo","spreadTeam":"Buffalo","spread":-7,"total":50.5},
+    {"id":"nfl-w3-car-cle","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"FOX","away":"Carolina","home":"Cleveland","spreadTeam":"Carolina","spread":-2.5,"total":42.5},
+    {"id":"nfl-w3-nyj-det","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"FOX","away":"NY Jets","home":"Detroit","spreadTeam":"Detroit","spread":-6.5,"total":47.5},
+    {"id":"nfl-w3-hou-ind","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"CBS","away":"Houston","home":"Indianapolis","spreadTeam":"Houston","spread":-2.5,"total":42.5},
+    {"id":"nfl-w3-kc-mia","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"CBS","away":"Kansas City","home":"Miami","spreadTeam":"Kansas City","spread":-11.5,"total":46.5},
+    {"id":"nfl-w3-ten-nyg","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"CBS","away":"Tennessee","home":"NY Giants","spreadTeam":"NY Giants","spread":-2.5,"total":39.5},
+    {"id":"nfl-w3-cin-pit","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"CBS","away":"Cincinnati","home":"Pittsburgh","spreadTeam":"Cincinnati","spread":-3.5,"total":42.5},
+    {"id":"nfl-w3-sea-was","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"FOX","away":"Seattle","home":"Washington","spreadTeam":"Seattle","spread":-7,"total":40.5},
+    {"id":"nfl-w3-ne-jax","date":"2026-09-27","kick":"Sun 1:00 ET","tv":"CBS","away":"New England","home":"Jacksonville","spreadTeam":"Jacksonville","spread":-3,"total":45.5},
+    {"id":"nfl-w3-ari-sf","date":"2026-09-27","kick":"Sun 4:05 ET","tv":"FOX","away":"Arizona","home":"San Francisco","spreadTeam":"San Francisco","spread":-8.5,"total":47.5},
+    {"id":"nfl-w3-min-tb","date":"2026-09-27","kick":"Sun 4:05 ET","tv":"FOX","away":"Minnesota","home":"Tampa Bay","spreadTeam":"Minnesota","spread":-1.5,"total":42.5},
+    {"id":"nfl-w3-bal-dal","date":"2026-09-27","kick":"Sun 4:25 ET","tv":"CBS","away":"Baltimore","home":"Dallas","spreadTeam":"Baltimore","spread":-3.5,"total":52.5,"note":"Rio"},
+    {"id":"nfl-w3-lv-no","date":"2026-09-27","kick":"Sun 4:25 ET","tv":"CBS","away":"Las Vegas","home":"New Orleans","spreadTeam":"New Orleans","spread":-3,"total":43.5},
+    {"id":"nfl-w3-lar-den","date":"2026-09-27","kick":"Sun 8:20 ET","tv":"NBC","away":"LA Rams","home":"Denver","spreadTeam":"LA Rams","spread":-2.5,"total":45.5},
+    {"id":"nfl-w3-phi-chi","date":"2026-09-28","kick":"Mon 8:15 ET","tv":"ESPN","away":"Philadelphia","home":"Chicago","spreadTeam":"Philadelphia","spread":-4.5,"total":41.5}
+  ]
+}
