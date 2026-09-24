@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tracker · Football Research Desk</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=8">
-<link rel="stylesheet" href="app.css?v=8">
-<link rel="stylesheet" href="header-book.css?v=8">
+<link rel="stylesheet" href="../css/site.css?v=9">
+<link rel="stylesheet" href="app.css?v=9">
+<link rel="stylesheet" href="header-book.css?v=9">
 <link rel="icon" href="../brand/mark.svg">
 </head>
 <body>
 <header class="top">
   <div class="wrap bar">
     <a class="brand" href="../index.html"><img src="../brand/mark.svg" alt="FRD"><div><strong>FRD</strong><span class="full">FOOTBALL RESEARCH DESK</span></div></a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-label="Menu">&#9776;</button>
-    <nav class="links">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu">
+    <label class="menu-btn" for="nav-toggle">Menu</label>
+    <nav class="links" id="site-nav">
       <a href="../index.html">Home</a>
       <a href="../method.html">Method</a>
       <a href="../archive.html">Archive</a>
@@ -71,10 +72,9 @@
 </div>
 <footer class="site"><div class="wrap"><strong>FRD</strong> · Confirm the number. · Not betting advice. 21+.</div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../js/nav.js?v=8"></script>
 <script src="config.js?v=5"></script>
 <script src="card.js"></script>
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 <script src="nav-book.js"></script>
 <script src="pending-add.js"></script>
 </body></html>
