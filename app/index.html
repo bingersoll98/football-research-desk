@@ -6,8 +6,8 @@
 <title>Tracker · Football Research Desk</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/site.css?v=9">
-<link rel="stylesheet" href="app.css?v=9">
-<link rel="stylesheet" href="header-book.css?v=9">
+<link rel="stylesheet" href="app.css?v=10">
+<link rel="stylesheet" href="header-book.css?v=10">
 <link rel="icon" href="../brand/mark.svg">
 </head>
 <body>
@@ -61,6 +61,11 @@
         <button class="btn ghost sm" type="button" data-filter="frd">FRD picks</button>
         <button class="btn ghost sm" type="button" data-filter="mine">Yours</button>
       </div>
+      <div class="row">
+        <button class="btn ghost sm" type="button" data-status="all">Any status</button>
+        <button class="btn ghost sm" type="button" data-status="pending">Pending</button>
+        <button class="btn ghost sm" type="button" data-status="settled">Settled</button>
+      </div>
       <div id="form-wrap" class="card hidden"></div>
       <div id="bet-list"></div>
     </section>
@@ -74,7 +79,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js?v=5"></script>
 <script src="card.js"></script>
-<script src="app.js?v=9"></script>
+<script src="app.js?v=10"></script>
 <script src="nav-book.js"></script>
 <script src="pending-add.js"></script>
-</body></html>
+</body>
+</html>
