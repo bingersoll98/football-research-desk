@@ -2,7 +2,7 @@
   const KEY = "frd_app_v1";
   const cfg = window.FRD_CONFIG || {};
   const cloud = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
-  let sb = null, session = null, view = "dashboard", deskCard = window.FRD_CARD || { plays: [] }, betFilter = "all";
+  let sb = null, session = null, view = "dashboard", deskCard = window.FRD_CARD || { plays: [] }, betFilter = "all", statusFilter = "all";
   const $ = (id) => document.getElementById(id);
   const uid = () => Math.random().toString(36).slice(2) + Date.now().toString(36);
   function emptyBook() { return { unit: 25, bets: [] }; }
@@ -164,7 +164,16 @@
     if ($("s-u")) $("s-u").textContent = unitsTxt(all.units);
     if ($("s-p")) $("s-p").textContent = money(all.profit);
     if ($("unit-label")) $("unit-label").textContent = "$" + book.unit + " / 1u";
-    const shown = book.bets.filter((r) => betFilter === "frd" ? r.frdPick : betFilter === "mine" ? !r.frdPick : true);
+    document.querySelectorAll("[data-filter]").forEach((el) => el.classList.toggle("active", el.getAttribute("data-filter") === betFilter));
+    document.querySelectorAll("[data-status]").forEach((el) => el.classList.toggle("active", el.getAttribute("data-status") === statusFilter));
+    const shown = book.bets.filter((r) => {
+      const pending = !r.status || r.status === "PENDING";
+      if (betFilter === "frd" && !r.frdPick) return false;
+      if (betFilter === "mine" && r.frdPick) return false;
+      if (statusFilter === "pending" && !pending) return false;
+      if (statusFilter === "settled" && pending) return false;
+      return true;
+    });
     if ($("bet-list")) $("bet-list").innerHTML = table(shown);
     if ($("unit-input")) $("unit-input").value = book.unit;
     if ($("form-wrap")) $("form-wrap").classList.add("hidden");
@@ -196,6 +205,7 @@
     if (t.id === "logout") logout();
     if (t.getAttribute("data-view")) { view = t.getAttribute("data-view") === "flyer" ? "bets" : t.getAttribute("data-view"); render(); }
     if (t.getAttribute("data-filter")) { betFilter = t.getAttribute("data-filter"); view = "bets"; render(); }
+    if (t.getAttribute("data-status")) { statusFilter = t.getAttribute("data-status"); view = "bets"; render(); }
     if (t.getAttribute("data-add-desk")) addDeskPlay(t.getAttribute("data-add-desk"));
     if (t.id === "add-bet") { $("form-wrap").classList.remove("hidden"); $("form-wrap").innerHTML = rowForm("bets"); }
     if (t.id === "cancel-row") $("form-wrap").classList.add("hidden");
