@@ -29,3 +29,9 @@ nav.links .nav-parent{background:none;border:0;padding:0;color:var(--navy);font:
   .nav-item .sub{display:none !important;position:static !important;padding-left:12px}
   .nav-item.open .sub{display:block !important}
 }
+
+details.nav-item summary{color:var(--navy)}
+@media(max-width:900px){
+  details.user-slot{margin-left:auto;order:3}
+  label.menu-btn{order:4}
+}
