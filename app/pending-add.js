@@ -1,13 +1,25 @@
 (function () {
+  function fromHash() {
+    var h = location.hash || "";
+    var i = h.indexOf("add=");
+    if (i < 0) return null;
+    try { return JSON.parse(decodeURIComponent(h.slice(i + 4))); } catch (e) { return null; }
+  }
   function readPending() {
+    var play = fromHash();
+    if (play && play.play) return play;
     try {
-      var raw = sessionStorage.getItem("FRD_PENDING_ADD");
+      var raw = sessionStorage.getItem("FRD_PENDING_ADD") || localStorage.getItem("FRD_PENDING_ADD");
       if (!raw) return null;
       return JSON.parse(raw);
     } catch (e) { return null; }
   }
   function clearPending() {
     try { sessionStorage.removeItem("FRD_PENDING_ADD"); } catch (e) {}
+    try { localStorage.removeItem("FRD_PENDING_ADD"); } catch (e) {}
+    if ((location.hash || "").indexOf("add=") >= 0) {
+      try { history.replaceState(null, "", "#bets"); } catch (e) { location.hash = "bets"; }
+    }
   }
   function uid() {
     return Math.random().toString(36).slice(2) + Date.now().toString(36);
@@ -53,32 +65,34 @@
       frdPick: false,
       flyer: false
     });
-    await sb.from("books").upsert({
+    var up = await sb.from("books").upsert({
       user_id: user.id,
       data: book,
       updated_at: new Date().toISOString()
     });
+    if (up.error) return false;
     clearPending();
     return true;
   }
   var busy = false;
+  var tries = 0;
   async function tick() {
     if (busy) return;
     var play = readPending();
     if (!play) return;
     busy = true;
+    tries += 1;
     try {
       var ok = await save(play);
       if (ok) {
-        var betsBtn = document.querySelector("[data-view=bets]");
-        if (betsBtn) betsBtn.click();
-        else location.hash = "bets";
-        setTimeout(function () { location.reload(); }, 200);
+        location.hash = "bets";
+        location.reload();
+        return;
       }
     } finally {
       busy = false;
     }
+    if (tries < 40) setTimeout(tick, 400);
   }
-  setTimeout(tick, 400);
-  document.addEventListener("click", function () { setTimeout(tick, 300); });
+  setTimeout(tick, 500);
 })();

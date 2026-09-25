@@ -16,6 +16,10 @@
     if (!isLean(g, kind, which)) return "";
     return '<span class="frd-tag">FRD PICK</span>';
   }
+  function dec(v) {
+    if (!v) return "";
+    try { return decodeURIComponent(v); } catch (e) { return v; }
+  }
   function attr(g) {
     return ' data-game="' + encodeURIComponent((g.away || "") + " @ " + (g.home || "")) + '"' +
       ' data-date="' + encodeURIComponent(g.date || "") + '"' +
@@ -24,21 +28,23 @@
   }
   function ticketFromBtn(btn) {
     return {
-      week: decodeURIComponent(btn.getAttribute("data-week") || ""),
-      date: decodeURIComponent(btn.getAttribute("data-date") || ""),
-      league: decodeURIComponent(btn.getAttribute("data-league") || ""),
-      game: decodeURIComponent(btn.getAttribute("data-game") || ""),
-      play: decodeURIComponent(btn.getAttribute("data-play") || ""),
-      type: decodeURIComponent(btn.getAttribute("data-type") || "Spread"),
-      odds: decodeURIComponent(btn.getAttribute("data-odds") || "-110"),
-      source: decodeURIComponent(btn.getAttribute("data-source") || "Week board"),
+      week: dec(btn.getAttribute("data-week")),
+      date: dec(btn.getAttribute("data-date")),
+      league: dec(btn.getAttribute("data-league")),
+      game: dec(btn.getAttribute("data-game")),
+      play: dec(btn.getAttribute("data-play")),
+      type: dec(btn.getAttribute("data-type")) || "Spread",
+      odds: dec(btn.getAttribute("data-odds")) || "-110",
+      source: dec(btn.getAttribute("data-source")) || "Week board",
       board: "LEAN",
       addable: true
     };
   }
   function add(play) {
-    try { sessionStorage.setItem("FRD_PENDING_ADD", JSON.stringify(play)); } catch (e) {}
-    location.href = "app/#bets";
+    var raw = JSON.stringify(play);
+    try { sessionStorage.setItem("FRD_PENDING_ADD", raw); } catch (e) {}
+    try { localStorage.setItem("FRD_PENDING_ADD", raw); } catch (e) {}
+    location.href = "app/index.html#bets&add=" + encodeURIComponent(raw);
   }
   function propRow(g, p) {
     var play = p.play || "";
