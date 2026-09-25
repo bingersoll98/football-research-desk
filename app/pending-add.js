@@ -9,46 +9,76 @@
   function clearPending() {
     try { sessionStorage.removeItem("FRD_PENDING_ADD"); } catch (e) {}
   }
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
-    });
+  function uid() {
+    return Math.random().toString(36).slice(2) + Date.now().toString(36);
   }
-  function formHtml(p) {
-    var league = p.league || "CFB";
-    var type = p.type || "Spread";
-    function opt(list, cur) {
-      return list.map(function (t) {
-        return "<option" + (t === cur ? " selected" : "") + ">" + t + "</option>";
-      }).join("");
-    }
-    return '<div class="grid3"><div><label>Week</label><input id="f-week" value="' + esc(p.week || "") + '"></div><div><label>Date</label><input id="f-date" type="date" value="' + esc(p.date || "") + '"></div><div><label>League</label><select id="f-league">' + opt(["NFL", "CFB"], league) + '</select></div></div>' +
-      '<label>Game</label><input id="f-game" value="' + esc(p.game || "") + '"><label>Play</label><input id="f-play" value="' + esc(p.play || "") + '">' +
-      '<div class="grid3"><div><label>Type</label><select id="f-type">' + opt(["Spread", "Total", "Moneyline", "Prop"], type) + '</select></div><div><label>Odds</label><input id="f-odds" value="' + esc(p.odds || "-110") + '"></div><div><label>Units</label><input id="f-units" value="1"></div></div>' +
-      '<div class="grid2"><div><label>Book</label><input id="f-book" value="Fanatics"></div><div><label>Source</label><input id="f-source" value="' + esc(p.source || "Week board") + '"></div></div>' +
-      '<label>Nickname</label><input id="f-nick" value="">' +
-      '<label class="check"><input id="f-frd" type="checkbox"> FRD Pick</label>' +
-      '<label class="check"><input id="f-flyer" type="checkbox"> Flyer</label>' +
-      '<div class="grid2"><div><label>Status</label><select id="f-status"><option selected>PENDING</option><option>W</option><option>L</option><option>P</option></select></div><div><label>Result</label><input id="f-result" value=""></div></div>' +
-      '<div class="row" style="margin-top:14px"><button class="btn navy" type="button" id="save-row">Add to book</button><button class="btn ghost" type="button" id="cancel-row">Cancel</button></div>';
-  }
-  function fill(play) {
+  async function save(play) {
+    var cfg = window.FRD_CONFIG || {};
     var app = document.getElementById("app");
-    var wrap = document.getElementById("form-wrap");
-    if (!app || app.classList.contains("hidden") || !wrap || !play || !play.play) return false;
-    var betsBtn = document.querySelector("[data-view=bets]");
-    if (betsBtn) betsBtn.click();
-    wrap.classList.remove("hidden");
-    wrap.innerHTML = formHtml(play);
+    if (!app || app.classList.contains("hidden")) return false;
+    if (!play || !play.play) return false;
+    if (!cfg.supabaseUrl || !window.supabase) return false;
+    var sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, {
+      auth: { persistSession: true, storage: window.localStorage }
+    });
+    var sess = await sb.auth.getSession();
+    var user = sess.data && sess.data.session && sess.data.session.user;
+    if (!user) return false;
+    var row = await sb.from("books").select("data").eq("user_id", user.id).maybeSingle();
+    var book = (row.data && row.data.data) || { unit: 25, bets: [] };
+    if (!Array.isArray(book.bets)) book.bets = [];
+    var game = play.game || "";
+    var pick = play.play || "";
+    if (book.bets.some(function (r) { return r.game === game && r.play === pick; })) {
+      clearPending();
+      return true;
+    }
+    var units = 1;
+    book.bets.unshift({
+      id: uid(),
+      week: String(play.week || ""),
+      date: play.date || "",
+      league: play.league || "CFB",
+      game: game,
+      play: pick,
+      type: play.type || "Spread",
+      odds: String(play.odds || "-110").replace("+", ""),
+      book: "Fanatics",
+      units: units,
+      stake: +(Number(book.unit || 25) * units).toFixed(2),
+      status: "PENDING",
+      result: "",
+      source: play.source || "Week board",
+      nickname: "",
+      frdPick: false,
+      flyer: false
+    });
+    await sb.from("books").upsert({
+      user_id: user.id,
+      data: book,
+      updated_at: new Date().toISOString()
+    });
     clearPending();
     return true;
   }
-  function tick() {
+  var busy = false;
+  async function tick() {
+    if (busy) return;
     var play = readPending();
     if (!play) return;
-    if (fill(play)) return;
-    setTimeout(tick, 250);
+    busy = true;
+    try {
+      var ok = await save(play);
+      if (ok) {
+        var betsBtn = document.querySelector("[data-view=bets]");
+        if (betsBtn) betsBtn.click();
+        else location.hash = "bets";
+        setTimeout(function () { location.reload(); }, 200);
+      }
+    } finally {
+      busy = false;
+    }
   }
-  setTimeout(tick, 300);
-  document.addEventListener("click", function () { setTimeout(tick, 200); });
+  setTimeout(tick, 400);
+  document.addEventListener("click", function () { setTimeout(tick, 300); });
 })();
