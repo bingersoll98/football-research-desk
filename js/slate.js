@@ -16,30 +16,38 @@
     if (!isLean(g, kind, which)) return "";
     return '<span class="frd-tag">FRD PICK</span>';
   }
-  function ticket(g, play, type, odds, source) {
+  function attr(g) {
+    return ' data-game="' + encodeURIComponent((g.away || "") + " @ " + (g.home || "")) + '"' +
+      ' data-date="' + encodeURIComponent(g.date || "") + '"' +
+      ' data-week="' + encodeURIComponent(String(window.FRD_SLATE && window.FRD_SLATE.week || "")) + '"' +
+      ' data-league="' + encodeURIComponent((window.FRD_SLATE && window.FRD_SLATE.league) || "") + '"';
+  }
+  function ticketFromBtn(btn) {
     return {
-      week: String(window.FRD_SLATE && window.FRD_SLATE.week || ""),
-      date: g.date || "",
-      league: window.FRD_SLATE && window.FRD_SLATE.league || "",
-      game: g.away + " @ " + g.home,
-      play: play,
-      type: type,
-      odds: odds || "-110",
-      source: source || "Week board",
+      week: decodeURIComponent(btn.getAttribute("data-week") || ""),
+      date: decodeURIComponent(btn.getAttribute("data-date") || ""),
+      league: decodeURIComponent(btn.getAttribute("data-league") || ""),
+      game: decodeURIComponent(btn.getAttribute("data-game") || ""),
+      play: decodeURIComponent(btn.getAttribute("data-play") || ""),
+      type: decodeURIComponent(btn.getAttribute("data-type") || "Spread"),
+      odds: decodeURIComponent(btn.getAttribute("data-odds") || "-110"),
+      source: decodeURIComponent(btn.getAttribute("data-source") || "Week board"),
       board: "LEAN",
       addable: true
     };
   }
   function add(play) {
     try { sessionStorage.setItem("FRD_PENDING_ADD", JSON.stringify(play)); } catch (e) {}
-    location.href = "app/";
+    location.href = "app/#bets";
   }
-  function propRow(p) {
+  function propRow(g, p) {
     var play = p.play || "";
     var odds = p.odds ? String(p.odds) : "";
     var type = p.type || "Player Prop";
-    return '<button type="button" class="prop frd-lean" data-play="' + encodeURIComponent(play) +
-      '" data-type="' + encodeURIComponent(type) + '" data-odds="' + encodeURIComponent(odds || "-110") +
+    return '<button type="button" class="prop frd-lean"' + attr(g) +
+      ' data-play="' + encodeURIComponent(play) +
+      '" data-type="' + encodeURIComponent(type) +
+      '" data-odds="' + encodeURIComponent(odds || "-110") +
       '" data-source="' + encodeURIComponent(p.source || "Packet Prop") + '">' +
       '<span class="frd-tag">FRD PICK</span>' +
       "<b>" + play + "</b>" +
@@ -50,25 +58,25 @@
     var awayPlay = side(g, g.away);
     var homePlay = side(g, g.home);
     var marked = leans(g).length > 0 || props(g).length > 0;
-    var gid = g.id || ("g-" + i);
+    var a = attr(g);
     var propHtml = props(g).length
-      ? '<div class="props"><p class="props-label">FRD props</p>' + props(g).map(propRow).join("") + "</div>"
+      ? '<div class="props"><p class="props-label">FRD props</p>' + props(g).map(function (p) { return propRow(g, p); }).join("") + "</div>"
       : "";
-    return '<article class="game' + (marked ? " frd" : "") + '" data-gid="' + gid + '">' +
+    return '<article class="game' + (marked ? " frd" : "") + '" data-gid="' + (g.id || ("g-" + i)) + '">' +
       '<div class="when">' + (g.kick || "") + (g.tv ? " · " + g.tv : "") + (g.note ? " · " + g.note : "") +
         (marked ? ' <span class="frd-tag">FRD</span>' : "") + "</div>" +
       '<div class="match">' +
-        '<button type="button" class="side' + (isLean(g, "spread", "away") ? " frd-lean" : "") + '" data-play="' + encodeURIComponent(awayPlay.play) + '" data-type="Spread">' +
+        '<button type="button" class="side' + (isLean(g, "spread", "away") ? " frd-lean" : "") + '"' + a + ' data-play="' + encodeURIComponent(awayPlay.play) + '" data-type="Spread" data-odds="-110" data-source="Week board">' +
           rank(g.awayRank) + g.away + "<b>" + (g.spreadTeam === g.away ? g.spread : "+" + Math.abs(g.spread)) + "</b>" +
           leanTag(g, "spread", "away") + "</button>" +
         '<span class="at">@</span>' +
-        '<button type="button" class="side' + (isLean(g, "spread", "home") ? " frd-lean" : "") + '" data-play="' + encodeURIComponent(homePlay.play) + '" data-type="Spread">' +
+        '<button type="button" class="side' + (isLean(g, "spread", "home") ? " frd-lean" : "") + '"' + a + ' data-play="' + encodeURIComponent(homePlay.play) + '" data-type="Spread" data-odds="-110" data-source="Week board">' +
           rank(g.homeRank) + g.home + "<b>" + (g.spreadTeam === g.home ? g.spread : "+" + Math.abs(g.spread)) + "</b>" +
           leanTag(g, "spread", "home") + "</button>" +
       "</div>" +
       '<div class="totals">' +
-        '<button type="button" class="' + (isLean(g, "total", "over") ? "frd-lean" : "") + '" data-play="' + encodeURIComponent("Over " + g.total) + '" data-type="Total">O ' + g.total + leanTag(g, "total", "over") + "</button>" +
-        '<button type="button" class="' + (isLean(g, "total", "under") ? "frd-lean" : "") + '" data-play="' + encodeURIComponent("Under " + g.total) + '" data-type="Total">U ' + g.total + leanTag(g, "total", "under") + "</button>" +
+        '<button type="button"' + (isLean(g, "total", "over") ? ' class="frd-lean"' : "") + a + ' data-play="' + encodeURIComponent("Over " + g.total) + '" data-type="Total" data-odds="-110" data-source="Week board">O ' + g.total + leanTag(g, "total", "over") + "</button>" +
+        '<button type="button"' + (isLean(g, "total", "under") ? ' class="frd-lean"' : "") + a + ' data-play="' + encodeURIComponent("Under " + g.total) + '" data-type="Total" data-odds="-110" data-source="Week board">U ' + g.total + leanTag(g, "total", "under") + "</button>" +
       "</div>" + propHtml + "</article>";
   }
   async function boot() {
@@ -91,18 +99,8 @@
     host.addEventListener("click", function (e) {
       var btn = e.target.closest("button[data-play]");
       if (!btn) return;
-      var art = btn.closest(".game");
-      if (!art) return;
-      var gid = art.getAttribute("data-gid");
-      var g = games.filter(function (x, i) { return (x.id || ("g-" + i)) === gid; })[0];
-      if (!g) return;
-      add(ticket(
-        g,
-        decodeURIComponent(btn.getAttribute("data-play")),
-        decodeURIComponent(btn.getAttribute("data-type") || "Spread"),
-        decodeURIComponent(btn.getAttribute("data-odds") || "-110"),
-        decodeURIComponent(btn.getAttribute("data-source") || "Week board")
-      ));
+      e.preventDefault();
+      add(ticketFromBtn(btn));
     });
   }
   boot();
