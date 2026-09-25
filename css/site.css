@@ -80,3 +80,6 @@ nav.links{margin-left:auto}
   .nav-item .sub{position:static;padding:0 0 0 12px}
   .nav-item .sub a, .nav-item .sub button{border:0;border-bottom:1px solid var(--line);background:transparent}
 }
+
+details.nav-item > summary{padding:10px 4px;min-height:44px;display:inline-flex;align-items:center}
+details.nav-item .sub, details.user-slot .user-drop{pointer-events:auto}
