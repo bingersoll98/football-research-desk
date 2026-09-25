@@ -155,6 +155,7 @@
     if ($("bets")) $("bets").classList.toggle("hidden", view !== "bets");
     if ($("settings")) $("settings").classList.toggle("hidden", view !== "settings");
     document.querySelectorAll("[data-view]").forEach((el) => el.classList.toggle("active", el.getAttribute("data-view") === view));
+    const tr = document.querySelector("#nav-tracker > a"); if (tr) tr.classList.remove("active");
     if ($("s-rec")) $("s-rec").textContent = recTxt(all);
     if ($("s-pending")) $("s-pending").textContent = all.pending + " pending";
     if ($("s-frd")) $("s-frd").textContent = recTxt(frd);
@@ -180,7 +181,17 @@
     renderDesk(book);
   }
   function showGate() { $("gate").classList.remove("hidden"); $("app").classList.add("hidden"); if ($("cloud-note")) $("cloud-note").textContent = cloud ? "Accounts sync on any phone once you log in." : "Prototype mode: your book stays in this browser until a free Supabase project is connected."; }
-  function showApp() { $("gate").classList.add("hidden"); $("app").classList.remove("hidden"); view = "dashboard"; render(); }
+  function viewFromHash() {
+    const h = (location.hash || "").replace("#", "");
+    if (h === "bets") return "bets";
+    if (h === "settings") return "settings";
+    return "dashboard";
+  }
+  function setHash() {
+    const h = view === "bets" ? "bets" : view === "settings" ? "settings" : "desk";
+    if (history.replaceState) history.replaceState(null, "", "#" + h);
+  }
+  function showApp() { $("gate").classList.add("hidden"); $("app").classList.remove("hidden"); view = viewFromHash(); render(); }
   async function boot() {
     if (window.FRD_CARD && window.FRD_CARD.plays) deskCard = window.FRD_CARD;
     try {
@@ -203,7 +214,7 @@
     if (t.id === "go-signup") signup();
     if (t.id === "go-login") login();
     if (t.id === "logout") logout();
-    if (t.getAttribute("data-view")) { view = t.getAttribute("data-view") === "flyer" ? "bets" : t.getAttribute("data-view"); render(); }
+    if (t.getAttribute("data-view")) { view = t.getAttribute("data-view") === "flyer" ? "bets" : t.getAttribute("data-view"); setHash(); render(); }
     if (t.getAttribute("data-filter")) { betFilter = t.getAttribute("data-filter"); view = "bets"; render(); }
     if (t.getAttribute("data-status")) { statusFilter = t.getAttribute("data-status"); view = "bets"; render(); }
     if (t.getAttribute("data-add-desk")) addDeskPlay(t.getAttribute("data-add-desk"));
