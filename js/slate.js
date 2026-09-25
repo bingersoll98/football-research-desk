@@ -81,7 +81,11 @@
     if (title) title.textContent = data.label || "This week";
     if (meta) meta.textContent = (data.updated || "") + (data.note ? " — " + data.note : "");
     document.title = (data.label || "Week") + " · Football Research Desk";
-    host.innerHTML = (data.games || []).map(card).join("");
+    var locked = !!data.locked;
+    var notice = locked
+      ? "Lines locked Friday 2:00 CT with the Packet. Gold FRD PICK tags are this week’s published leans. Confirm the number."
+      : "Schedule is up. Spreads, totals, and FRD marks lock Friday 2:00 CT with the Packet. Until then this board is kick times only — not the card.";
+    host.innerHTML = '<p class="slate-note' + (locked ? " locked" : "") + '">' + notice + "</p>" + (data.games || []).map(card).join("");
     host.addEventListener("click", function (e) {
       var btn = e.target.closest("button[data-play]");
       if (!btn) return;
