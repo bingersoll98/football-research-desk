@@ -14,3 +14,11 @@ nav.links button.quiet{color:var(--muted)}
 }
 
 .btn.ghost.active{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+
+.user-slot{order:3}
+label.menu-btn{order:4}
+nav.links{order:2}
+@media(max-width:900px){
+  .user-slot{margin-left:auto}
+  label.menu-btn{margin-left:8px}
+}
