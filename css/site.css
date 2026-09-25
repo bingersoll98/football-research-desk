@@ -46,3 +46,29 @@
     box-shadow: 0 8px 18px rgba(18,32,51,.08);
   }
 }
+
+.user-slot{position:relative;flex-shrink:0;margin-left:8px;z-index:130}
+.user-btn{width:44px;height:44px;border:1px solid var(--navy);background:var(--cream);color:var(--navy);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.user-btn[aria-expanded="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.user-drop{position:absolute;right:0;top:calc(100% + 8px);min-width:180px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:10px 12px;box-shadow:0 10px 24px rgba(18,32,51,.12);z-index:140}
+.user-drop[hidden]{display:none !important}
+.user-drop .user-mail{margin:0 0 8px;font-size:11px;color:var(--muted);letter-spacing:0;text-transform:none;word-break:break-all}
+.user-drop a,.user-drop button{display:block;width:100%;background:none;border:0;padding:8px 0;text-align:left;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);cursor:pointer}
+.nav-item{position:relative}
+.nav-item .sub{display:none;position:absolute;left:0;top:calc(100% + 10px);min-width:140px;background:var(--cream);border:1px solid var(--line);border-top:3px solid var(--gold);padding:8px 0;z-index:120;flex-direction:column}
+.nav-item .sub a,.nav-item .sub button{display:block;width:100%;background:none;border:0;padding:8px 14px;text-align:left;font:inherit;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);cursor:pointer;white-space:nowrap}
+.nav-item .sub a.active,.nav-item .sub button.active{color:var(--gold)}
+.nav-item.open > .sub{display:flex}
+@media (hover: hover) and (pointer: fine) {
+  .nav-item:hover > .sub{display:flex}
+  .user-btn:hover{background:var(--navy);color:var(--cream)}
+  .user-drop a:hover,.user-drop button:hover,.nav-item .sub a:hover,.nav-item .sub button:hover{color:var(--gold)}
+}
+header.top .bar{display:flex;align-items:center}
+nav.links{margin-left:auto}
+@media(max-width:900px){
+  .user-slot{margin-left:auto}
+  nav.links{margin-left:0}
+  .nav-item .sub{position:static;display:flex;border:0;padding:0 0 0 12px;background:transparent;box-shadow:none}
+  .nav-item .sub a,.nav-item .sub button{padding:10px 0;border-bottom:1px solid var(--line)}
+}
