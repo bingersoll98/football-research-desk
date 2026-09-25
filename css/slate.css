@@ -24,3 +24,6 @@
   .game .match{grid-template-columns:1fr}
   .game .at{display:none}
 }
+
+.slate-note{background:var(--cream);border-left:4px solid var(--gold);padding:12px 14px;margin:0 0 14px;font-size:13px;line-height:1.45;color:var(--navy)}
+.slate-note.locked{border-left-color:var(--navy);background:#fff}
