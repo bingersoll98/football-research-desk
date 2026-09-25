@@ -127,21 +127,24 @@
   function renderDesk(book) {
     const meta = $("card-meta"), box = $("desk-card"); if (!meta || !box) return;
     if (!deskCard.plays || !deskCard.plays.length) deskCard = window.FRD_CARD || deskCard;
-    meta.textContent = (deskCard.label || "This week") + (deskCard.updated ? " · " + deskCard.updated : "");
-    const plays = (deskCard && deskCard.plays) || [];
-    if (!plays.length) { box.innerHTML = `<p class="note">No published leans yet.</p>`; return; }
+    meta.textContent = (deskCard.note || deskCard.label || "This week") + (deskCard.updated ? " · " + deskCard.updated : "");
+    const plays = ((deskCard && deskCard.plays) || []).filter((p) => p.addable !== false && (p.source || "").indexOf("Flyer") === -1 && (p.board || "").toUpperCase() !== "PASS" && (p.board || "").toUpperCase() !== "FLYER");
+    if (!plays.length) { box.innerHTML = `<p class="note">${esc(deskCard.note || "Packet locks Friday 2:00 CT. Desk is Best 10 + Top 5 only.")}</p>`; return; }
     box.innerHTML = plays.map((p) => {
       const board = (p.board || "LEAN").toUpperCase();
       const cls = board === "PASS" ? "pass" : board === "FLYER" ? "flyer" : "lean";
       const taken = onBook((book && book.bets) || [], p);
       const btn = !p.addable ? `<span class="note">Not a ticket</span>` : taken ? `<span class="note">On your book</span>` : `<button class="btn sm" type="button" data-add-desk="${esc(p.id)}">Add to book</button>`;
-      return `<div class="desk-play ${board==="PASS"?"pass":""}"><div><span class="pill ${cls}">${esc(board)}</span> <span class="tag">${esc(p.league)} · ${esc(p.source || "")}</span><div><strong>${esc(p.play)}</strong> ${p.odds ? esc(p.odds) : ""}</div><div class="note">${esc(p.game)}${p.nickname ? " · " + esc(p.nickname) : ""}${p.why ? " — " + esc(p.why) : ""}</div></div><div>${btn}</div></div>`;
+      const rank = p.rank ? "#" + p.rank + " " : "";
+      const line = [p.now ? "now " + p.now : "", p.open ? "open " + p.open : "", p.fair ? "fair " + p.fair : ""].filter(Boolean).join(" · ");
+      const u = p.units || p.confidence || "";
+      return `<div class="desk-play"><div><span class="pill lean">${esc((p.source || "").indexOf("Prop") >= 0 ? "PROP" : "BEST 10")}</span> <span class="tag">${esc(p.league || "")} · ${esc(u)}</span><div><strong>${esc(rank + (p.play || ""))}</strong> ${p.odds ? esc(p.odds) : ""}</div><div class="note">${esc(line)}</div><div class="note">${esc(p.game || "")}${p.kick ? " · " + esc(p.kick) : ""}${p.why ? " — " + esc(p.why) : ""}</div></div><div>${btn}</div></div>`;
     }).join("");
   }
   async function addDeskPlay(id) {
     const play = ((deskCard && deskCard.plays) || []).find((p) => p.id === id); if (!play || !play.addable) return;
     const book = await currentBook(); if (onBook(book.bets, play)) return;
-    const units = 1;
+    const units = Number(play.units) > 0 ? Number(play.units) : 1;
     book.bets.unshift({ id: uid(), week: play.week || "", date: play.date || "", league: play.league || "", game: play.game || "", play: play.play || "", type: play.type || "Spread", odds: String(play.odds || "").replace("+", ""), book: "FRD", units, stake: +(book.unit * units).toFixed(2), status: "PENDING", result: "", source: play.source || "Desk", nickname: play.nickname || "", frdPick: true, flyer: play.tab === "flyer" || /flyer/i.test(play.board || play.source || ""), deskId: play.id });
     await writeBook(book); view = "bets"; render();
   }
