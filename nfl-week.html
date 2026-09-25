@@ -5,26 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NFL Week · Football Research Desk</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=13">
-<link rel="stylesheet" href="css/slate.css?v=13">
+<link rel="stylesheet" href="css/site.css?v=14">
+<link rel="stylesheet" href="css/slate.css?v=14">
 <link rel="icon" href="brand/mark.svg">
 </head>
 <body data-slate="slate/nfl.json">
-<header class="top">
-  <div class="wrap bar">
-    <a class="brand" href="index.html"><img src="brand/mark.svg" alt="FRD"><div><strong>FRD</strong><span class="full">FOOTBALL RESEARCH DESK</span></div></a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-label="Menu">☰</button>
-    <nav class="links">
-      <a href="index.html">Home</a>
-      <a href="method.html">Method</a>
-      <a href="archive.html">Archive</a>
-      <a class="active" href="nfl-week.html">NFL Week</a>
-      <a href="cfb-week.html">CFB Week</a>
-      <a href="app/index.html">Tracker</a>
-      <a href="subscribe.html">Get the Desk</a>
-    </nav>
-  </div>
-</header>
+<header class="top"><div class="wrap bar"><a class="brand" href="index.html"><img src="brand/mark.svg" alt="FRD"><div><strong>FRD</strong><span class="full">FOOTBALL RESEARCH DESK</span></div></a><nav class="links"><a href="index.html">Home</a><a href="method.html">Method</a><a href="archive.html">Archive</a><a class="active" href="nfl-week.html">NFL Week</a><a href="cfb-week.html">CFB Week</a><div class="nav-item"><a href="app/index.html">Tracker</a><div class="sub"><a href="app/index.html#desk">Desk</a><a href="app/index.html#bets">Bets</a><a href="app/index.html#settings">Settings</a></div></div><a href="subscribe.html">Get the Desk</a></nav><div class="user-slot" id="user-slot" data-app="app/index.html"></div><button class="menu-btn" type="button" aria-label="Menu">&#9776;</button></div></header>
 <section class="hero">
   <div class="wrap">
     <p class="kicker">The slate</p>
@@ -34,7 +20,7 @@
 </section>
 <main><div class="wrap"><div id="slate" class="slate"></div></div></main>
 <footer class="site"><div class="wrap"><strong>FRD</strong> · Confirm the number. · Not betting advice. 21+.</div></footer>
-<script src="js/nav.js"></script>
+<script src="js/nav.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="app/config.js?v=5"></script><script src="js/user-menu.js?v=14"></script>
 <script src="js/slate.js?v=13"></script>
 </body>
 </html>
