@@ -46,14 +46,15 @@
       (odds ? "<em>" + odds + "</em>" : "") +
       "</button>";
   }
-  function card(g) {
+  function card(g, i) {
     var awayPlay = side(g, g.away);
     var homePlay = side(g, g.home);
     var marked = leans(g).length > 0 || props(g).length > 0;
+    var gid = g.id || ("g-" + i);
     var propHtml = props(g).length
       ? '<div class="props"><p class="props-label">FRD props</p>' + props(g).map(propRow).join("") + "</div>"
       : "";
-    return '<article class="game' + (marked ? " frd" : "") + '">' +
+    return '<article class="game' + (marked ? " frd" : "") + '" data-gid="' + gid + '">' +
       '<div class="when">' + (g.kick || "") + (g.tv ? " · " + g.tv : "") + (g.note ? " · " + g.note : "") +
         (marked ? ' <span class="frd-tag">FRD</span>' : "") + "</div>" +
       '<div class="match">' +
@@ -85,12 +86,15 @@
     var notice = locked
       ? "Lines locked Friday 2:00 CT with the Packet. Gold FRD PICK tags are this week’s published leans. Confirm the number."
       : "Schedule is up. Spreads, totals, and FRD marks lock Friday 2:00 CT with the Packet. Until then this board is kick times only — not the card.";
-    host.innerHTML = '<p class="slate-note' + (locked ? " locked" : "") + '">' + notice + "</p>" + (data.games || []).map(card).join("");
+    var games = data.games || [];
+    host.innerHTML = '<p class="slate-note' + (locked ? " locked" : "") + '">' + notice + "</p>" + games.map(card).join("");
     host.addEventListener("click", function (e) {
       var btn = e.target.closest("button[data-play]");
       if (!btn) return;
       var art = btn.closest(".game");
-      var g = data.games[Array.prototype.indexOf.call(host.children, art)];
+      if (!art) return;
+      var gid = art.getAttribute("data-gid");
+      var g = games.filter(function (x, i) { return (x.id || ("g-" + i)) === gid; })[0];
       if (!g) return;
       add(ticket(
         g,
