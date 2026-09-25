@@ -22,3 +22,10 @@ nav.links{order:2}
   .user-slot{margin-left:auto}
   label.menu-btn{margin-left:8px}
 }
+
+nav.links .nav-parent{background:none;border:0;padding:0;color:var(--navy);font:inherit}
+#nav-tracker > .nav-parent, #nav-tracker > a{color:var(--navy) !important}
+@media(max-width:900px){
+  .nav-item .sub{display:none !important;position:static !important;padding-left:12px}
+  .nav-item.open .sub{display:block !important}
+}
