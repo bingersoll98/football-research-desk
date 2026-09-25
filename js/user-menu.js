@@ -2,54 +2,6 @@
   var slot = document.getElementById("user-slot");
   var inApp = location.pathname.indexOf("/app") !== -1;
   var appHref = (slot && slot.getAttribute("data-app")) || (inApp ? "index.html" : "app/index.html");
-  var fineHover = function () {
-    return window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  };
-
-  function closeAll(except) {
-    document.querySelectorAll("details.nav-item, details.user-slot").forEach(function (d) {
-      if (d !== except) d.open = false;
-    });
-  }
-
-  function bindMenu(d) {
-    var timer = null;
-    d.addEventListener("mouseenter", function () {
-      if (!fineHover()) return;
-      clearTimeout(timer);
-      closeAll(d);
-      d.open = true;
-    });
-    d.addEventListener("mouseleave", function () {
-      if (!fineHover()) return;
-      timer = setTimeout(function () { d.open = false; }, 120);
-    });
-    d.addEventListener("toggle", function () {
-      if (d.open) closeAll(d);
-    });
-  }
-
-  document.querySelectorAll("details.nav-item, details.user-slot").forEach(bindMenu);
-
-  document.addEventListener("click", function (e) {
-    var inside = e.target.closest && e.target.closest("details.nav-item, details.user-slot");
-    if (!inside) closeAll();
-    if (e.target && e.target.id === "logout") {
-      e.preventDefault();
-      var cfg = window.FRD_CONFIG || {};
-      function done() {
-        try { localStorage.removeItem("frd_app_v1"); } catch (err) {}
-        location.reload();
-      }
-      if (cfg.supabaseUrl && cfg.supabaseAnonKey && window.supabase) {
-        window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey).auth.signOut().finally(done);
-      } else done();
-    }
-    if (e.target.closest && e.target.closest(".sub, .user-drop") && e.target.closest("a, button")) {
-      var owner = e.target.closest("details");
-      setTimeout(function () { if (owner) owner.open = false; }, 0);
-    }
-  });
 
   function setDrop(user) {
     var drop = document.getElementById("user-drop");
@@ -82,6 +34,31 @@
       drop.appendChild(login);
     }
   }
+
+  document.addEventListener("click", function (e) {
+    var slotEl = document.getElementById("user-slot");
+    if (slotEl && e.target.closest && e.target.closest(".user-btn")) {
+      if (window.matchMedia && window.matchMedia("(hover: none)").matches) {
+        e.preventDefault();
+        slotEl.classList.toggle("open");
+        return;
+      }
+    }
+    if (slotEl && !(e.target.closest && e.target.closest("#user-slot"))) {
+      slotEl.classList.remove("open");
+    }
+    if (e.target && e.target.id === "logout") {
+      e.preventDefault();
+      var cfg = window.FRD_CONFIG || {};
+      function done() {
+        try { localStorage.removeItem("frd_app_v1"); } catch (err) {}
+        location.reload();
+      }
+      if (cfg.supabaseUrl && cfg.supabaseAnonKey && window.supabase) {
+        window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey).auth.signOut().finally(done);
+      } else done();
+    }
+  });
 
   setDrop(null);
   (async function () {
