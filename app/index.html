@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tracker · Football Research Desk</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/site.css?v=14">
-<link rel="stylesheet" href="app.css?v=14">
-<link rel="stylesheet" href="header-book.css?v=14">
+<link rel="stylesheet" href="../css/site.css?v=15">
+<link rel="stylesheet" href="app.css?v=15">
+<link rel="stylesheet" href="header-book.css?v=15">
 <link rel="icon" href="../brand/mark.svg">
 </head>
 <body>
@@ -22,8 +22,8 @@
       <a href="../nfl-week.html">NFL Week</a>
       <a href="../cfb-week.html">CFB Week</a>
       <div class="nav-item" id="nav-tracker">
-        <a href="index.html">Tracker</a>
-        <div class="sub book-only hidden">
+        <button type="button" class="nav-parent">Tracker</button>
+        <div class="sub">
           <button type="button" data-view="dashboard">Desk</button>
           <button type="button" data-view="bets">Bets</button>
           <button type="button" data-view="settings">Settings</button>
@@ -31,7 +31,7 @@
       </div>
       <a href="../subscribe.html">Get the Desk</a>
     </nav>
-    <div class="user-slot" id="user-slot" data-app="index.html"></div>
+    <div class="user-slot" id="user-slot" data-app="index.html"><button type="button" class="user-btn" id="user-btn" aria-label="Account">Account</button><div class="user-drop" id="user-drop" hidden><a href="index.html">Log in</a></div></div>
     <label class="menu-btn" for="nav-toggle">Menu</label>
   </div>
 </header>
@@ -83,9 +83,9 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js?v=5"></script>
 <script src="card.js"></script>
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script src="nav-book.js"></script>
-<script src="../js/user-menu.js?v=14"></script>
+<script src="../js/user-menu.js?v=15"></script>
 <script src="pending-add.js"></script>
 </body>
 </html>
