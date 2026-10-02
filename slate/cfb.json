@@ -1,1 +1,249 @@
-{"league":"CFB","week":5,"label":"CFB Week 5","updated":"Tue Sep 29, 2026 · schedule only","note":"Ranked games. Schedule only. FRD marks lock with Friday Packet 2:00 CT.","locked":false,"lockAt":"Friday 2:00 CT","games":[{"id":"cfb-w5-psu-nu","date":"2026-10-02","kick":"Fri 8:00 ET","tv":"FOX","away":"Penn State","home":"Northwestern","awayRank":null,"homeRank":null,"spreadTeam":"Penn State","spread":-2.5,"total":45.5},{"id":"cfb-w5-ala-msst","date":"2026-10-03","kick":"Sat 12:00 ET","tv":"ABC","away":"Alabama","home":"Mississippi State","awayRank":7,"homeRank":16,"spreadTeam":"Alabama","spread":-6,"total":60.5},{"id":"cfb-w5-nd-unc","date":"2026-10-03","kick":"Sat 12:00 ET","tv":"ESPN","away":"Notre Dame","home":"North Carolina","awayRank":3,"homeRank":null,"spreadTeam":"Notre Dame","spread":-21.5,"total":52.5},{"id":"cfb-w5-ucf-hou","date":"2026-10-03","kick":"Sat 12:00 ET","tv":"ESPN2","away":"UCF","home":"Houston","awayRank":null,"homeRank":20,"spreadTeam":"Houston","spread":-12.5,"total":48.5},{"id":"cfb-w5-bc-smu","date":"2026-10-03","kick":"Sat 12:00 ET","tv":"CW","away":"Boston College","home":"SMU","awayRank":null,"homeRank":21,"spreadTeam":"SMU","spread":-21,"total":55.5},{"id":"cfb-w5-mich-minn","date":"2026-10-03","kick":"Sat 12:00 ET","tv":"FOX","away":"Michigan","home":"Minnesota","awayRank":null,"homeRank":null,"spreadTeam":"Michigan","spread":-5.5,"total":42.5},{"id":"cfb-w5-vand-uga","date":"2026-10-03","kick":"Sat 12:45 ET","tv":"SECN","away":"Vanderbilt","home":"Georgia","awayRank":null,"homeRank":2,"spreadTeam":"Georgia","spread":-24.5,"total":51.5},{"id":"cfb-w5-osu-iowa","date":"2026-10-03","kick":"Sat 3:30 ET","tv":"CBS","away":"Ohio State","home":"Iowa","awayRank":5,"homeRank":14,"spreadTeam":"Ohio State","spread":-13.5,"total":44.5},{"id":"cfb-w5-fla-mizz","date":"2026-10-03","kick":"Sat 3:30 ET","tv":"ABC","away":"Florida","home":"Missouri","awayRank":8,"homeRank":25,"spreadTeam":"Florida","spread":-4.5,"total":56.5},{"id":"cfb-w5-aub-tenn","date":"2026-10-03","kick":"Sat 3:30 ET","tv":"ESPN","away":"Auburn","home":"Tennessee","awayRank":null,"homeRank":17,"spreadTeam":"Tennessee","spread":-7,"total":54.5},{"id":"cfb-w5-uk-scar","date":"2026-10-03","kick":"Sat 4:15 ET","tv":"SECN","away":"Kentucky","home":"South Carolina","awayRank":24,"homeRank":null,"spreadTeam":"South Carolina","spread":-2.5,"total":48.5},{"id":"cfb-w5-byu-tcu","date":"2026-10-03","kick":"Sat 7:00 ET","tv":"ESPN","away":"BYU","home":"TCU","awayRank":10,"homeRank":null,"spreadTeam":"BYU","spread":-6.5,"total":54.5},{"id":"cfb-w5-tt-col","date":"2026-10-03","kick":"Sat 7:30 ET","tv":"FOX","away":"Texas Tech","home":"Colorado","awayRank":12,"homeRank":null,"spreadTeam":"Texas Tech","spread":-13.5,"total":58.5},{"id":"cfb-w5-wash-usc","date":"2026-10-03","kick":"Sat 7:30 ET","tv":"NBC","away":"Washington","home":"USC","awayRank":null,"homeRank":18,"spreadTeam":"USC","spread":-9.5,"total":56.5},{"id":"cfb-w5-mia-clem","date":"2026-10-03","kick":"Sat 7:30 ET","tv":"ABC","away":"Miami","home":"Clemson","awayRank":4,"homeRank":null,"spreadTeam":"Miami","spread":-16.5,"total":52.5},{"id":"cfb-w5-ind-rut","date":"2026-10-03","kick":"Sat 8:00 ET","tv":"BTN","away":"Indiana","home":"Rutgers","awayRank":6,"homeRank":null,"spreadTeam":"Indiana","spread":-24.5,"total":52.5}]}
+{
+  "league": "CFB",
+  "week": 5,
+  "label": "CFB Week 5",
+  "updated": "Fri Oct 2, 2026 \u00b7 2:14 CT \u00b7 Packet locked",
+  "note": "Ranked games. Lines locked Friday 2:00 CT with the Packet.",
+  "locked": true,
+  "lockAt": "Friday 2:00 CT",
+  "games": [
+    {
+      "id": "cfb-w5-psu-nu",
+      "date": "2026-10-02",
+      "kick": "Fri 8:00 ET",
+      "tv": "FOX",
+      "away": "Penn State",
+      "home": "Northwestern",
+      "awayRank": null,
+      "homeRank": null,
+      "spreadTeam": "Penn State",
+      "spread": -2.5,
+      "total": 45.5,
+      "leans": [
+        {
+          "kind": "spread",
+          "side": "home",
+          "rank": 4,
+          "play": "Northwestern +3",
+          "odds": "-115",
+          "units": 1
+        }
+      ]
+    },
+    {
+      "id": "cfb-w5-ala-msst",
+      "date": "2026-10-03",
+      "kick": "Sat 12:00 ET",
+      "tv": "ABC",
+      "away": "Alabama",
+      "home": "Mississippi State",
+      "awayRank": 7,
+      "homeRank": 16,
+      "spreadTeam": "Alabama",
+      "spread": -6,
+      "total": 60.5
+    },
+    {
+      "id": "cfb-w5-nd-unc",
+      "date": "2026-10-03",
+      "kick": "Sat 12:00 ET",
+      "tv": "ESPN",
+      "away": "Notre Dame",
+      "home": "North Carolina",
+      "awayRank": 3,
+      "homeRank": null,
+      "spreadTeam": "Notre Dame",
+      "spread": -21.5,
+      "total": 47.5
+    },
+    {
+      "id": "cfb-w5-ucf-hou",
+      "date": "2026-10-03",
+      "kick": "Sat 12:00 ET",
+      "tv": "ESPN2",
+      "away": "UCF",
+      "home": "Houston",
+      "awayRank": null,
+      "homeRank": 20,
+      "spreadTeam": "Houston",
+      "spread": -12.5,
+      "total": 51.5
+    },
+    {
+      "id": "cfb-w5-bc-smu",
+      "date": "2026-10-03",
+      "kick": "Sat 12:00 ET",
+      "tv": "CW",
+      "away": "Boston College",
+      "home": "SMU",
+      "awayRank": null,
+      "homeRank": 21,
+      "spreadTeam": "SMU",
+      "spread": -21.5,
+      "total": 55.5
+    },
+    {
+      "id": "cfb-w5-mich-minn",
+      "date": "2026-10-03",
+      "kick": "Sat 12:00 ET",
+      "tv": "FOX",
+      "away": "Michigan",
+      "home": "Minnesota",
+      "awayRank": null,
+      "homeRank": null,
+      "spreadTeam": "Michigan",
+      "spread": -5.5,
+      "total": 43.5
+    },
+    {
+      "id": "cfb-w5-vand-uga",
+      "date": "2026-10-03",
+      "kick": "Sat 12:45 ET",
+      "tv": "SECN",
+      "away": "Vanderbilt",
+      "home": "Georgia",
+      "awayRank": null,
+      "homeRank": 2,
+      "spreadTeam": "Georgia",
+      "spread": -24.5,
+      "total": 51.5
+    },
+    {
+      "id": "cfb-w5-osu-iowa",
+      "date": "2026-10-03",
+      "kick": "Sat 3:30 ET",
+      "tv": "CBS",
+      "away": "Ohio State",
+      "home": "Iowa",
+      "awayRank": 5,
+      "homeRank": 14,
+      "spreadTeam": "Ohio State",
+      "spread": -14.5,
+      "total": 45.5,
+      "leans": [
+        {
+          "kind": "spread",
+          "side": "home",
+          "rank": 9,
+          "play": "Iowa +14.5",
+          "odds": "-110",
+          "units": 1
+        }
+      ]
+    },
+    {
+      "id": "cfb-w5-fla-mizz",
+      "date": "2026-10-03",
+      "kick": "Sat 3:30 ET",
+      "tv": "ABC",
+      "away": "Florida",
+      "home": "Missouri",
+      "awayRank": 8,
+      "homeRank": 25,
+      "spreadTeam": "Florida",
+      "spread": -5.5,
+      "total": 57
+    },
+    {
+      "id": "cfb-w5-aub-tenn",
+      "date": "2026-10-03",
+      "kick": "Sat 3:30 ET",
+      "tv": "ESPN",
+      "away": "Auburn",
+      "home": "Tennessee",
+      "awayRank": null,
+      "homeRank": 17,
+      "spreadTeam": "Tennessee",
+      "spread": -7,
+      "total": 54.5,
+      "leans": [
+        {
+          "kind": "spread",
+          "side": "away",
+          "rank": 5,
+          "play": "Auburn +7",
+          "odds": "-110",
+          "units": 1
+        }
+      ]
+    },
+    {
+      "id": "cfb-w5-uk-scar",
+      "date": "2026-10-03",
+      "kick": "Sat 4:15 ET",
+      "tv": "SECN",
+      "away": "Kentucky",
+      "home": "South Carolina",
+      "awayRank": 24,
+      "homeRank": null,
+      "spreadTeam": "South Carolina",
+      "spread": -2.5,
+      "total": 48.5
+    },
+    {
+      "id": "cfb-w5-byu-tcu",
+      "date": "2026-10-03",
+      "kick": "Sat 7:00 ET",
+      "tv": "ESPN",
+      "away": "BYU",
+      "home": "TCU",
+      "awayRank": 10,
+      "homeRank": null,
+      "spreadTeam": "BYU",
+      "spread": -6.5,
+      "total": 54.5
+    },
+    {
+      "id": "cfb-w5-tt-col",
+      "date": "2026-10-03",
+      "kick": "Sat 7:30 ET",
+      "tv": "FOX",
+      "away": "Texas Tech",
+      "home": "Colorado",
+      "awayRank": 12,
+      "homeRank": null,
+      "spreadTeam": "Texas Tech",
+      "spread": -13.5,
+      "total": 50.5
+    },
+    {
+      "id": "cfb-w5-wash-usc",
+      "date": "2026-10-03",
+      "kick": "Sat 7:30 ET",
+      "tv": "NBC",
+      "away": "Washington",
+      "home": "USC",
+      "awayRank": null,
+      "homeRank": 18,
+      "spreadTeam": "USC",
+      "spread": -9,
+      "total": 58.5
+    },
+    {
+      "id": "cfb-w5-mia-clem",
+      "date": "2026-10-03",
+      "kick": "Sat 7:30 ET",
+      "tv": "ABC",
+      "away": "Miami",
+      "home": "Clemson",
+      "awayRank": 4,
+      "homeRank": null,
+      "spreadTeam": "Miami",
+      "spread": -16.5,
+      "total": 47.5
+    },
+    {
+      "id": "cfb-w5-ind-rut",
+      "date": "2026-10-03",
+      "kick": "Sat 8:00 ET",
+      "tv": "BTN",
+      "away": "Indiana",
+      "home": "Rutgers",
+      "awayRank": 6,
+      "homeRank": null,
+      "spreadTeam": "Indiana",
+      "spread": -24.5,
+      "total": 52.5
+    }
+  ]
+}
