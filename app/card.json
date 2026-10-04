@@ -1,7 +1,7 @@
 {
   "label": "NFL Week 4 \u00b7 CFB Week 5",
-  "updated": "2026-10-02 14:14 CT",
-  "note": "Friday Packet locked. Best 10 + Top 5. Gameday may add up to 3 if a posted number moves.",
+  "updated": "2026-10-04 10:10 ET",
+  "note": "Friday Packet locked. Gameday Sun added Green Bay -3. Original rows stay and grade Tuesday.",
   "plays": [
     {
       "rank": 1,
@@ -152,6 +152,16 @@
       "odds": "-110",
       "type": "Player Prop",
       "source": "Packet Prop"
+    },
+    {
+      "rank": "G1",
+      "units": 1,
+      "league": "NFL",
+      "game": "Green Bay @ Tampa Bay",
+      "play": "Green Bay -3",
+      "odds": "-112",
+      "type": "Spread",
+      "source": "Gameday Sun"
     }
   ]
 }
