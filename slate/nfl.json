@@ -2,8 +2,8 @@
   "league": "NFL",
   "week": 4,
   "label": "NFL Week 4",
-  "updated": "Fri Oct 2, 2026 \u00b7 2:14 CT \u00b7 Packet locked",
-  "note": "Lines locked Friday 2:00 CT with the Packet. Gold FRD PICK tags are this week\u2019s published leans.",
+  "updated": "Sun Oct 4, 2026 \u00b7 10:10 ET \u00b7 Gameday add",
+  "note": "Packet leans stay. Gameday Sun tagged Green Bay -3 on the Packers-Buccaneers card.",
   "locked": true,
   "lockAt": "Friday 2:00 CT",
   "games": [
@@ -132,8 +132,9 @@
       "away": "Green Bay",
       "home": "Tampa Bay",
       "spreadTeam": "Green Bay",
-      "spread": -3.5,
-      "total": 39.5,
+      "spread": -3,
+      "total": 38.5,
+      "note": "Gameday Sun: board moved -3.5 to -3. Friday -3.5 stays on the book.",
       "leans": [
         {
           "kind": "spread",
@@ -142,6 +143,15 @@
           "play": "Green Bay -3.5",
           "odds": "-112",
           "units": 1
+        },
+        {
+          "kind": "spread",
+          "side": "away",
+          "rank": "G1",
+          "play": "Green Bay -3",
+          "odds": "-112",
+          "units": 1,
+          "source": "Gameday Sun"
         }
       ],
       "props": [
