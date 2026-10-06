@@ -1,307 +1,175 @@
 {
   "league": "NFL",
-  "week": 4,
-  "label": "NFL Week 4",
-  "updated": "Sun Oct 4, 2026 \u00b7 10:10 ET \u00b7 Gameday add",
-  "note": "Packet leans stay. Gameday Sun tagged Green Bay -3 on the Packers-Buccaneers card.",
-  "locked": true,
-  "lockAt": "Friday 2:00 CT",
+  "week": 5,
+  "label": "NFL Week 5",
+  "updated": "Tue Oct 6, 2026 \u00b7 schedule only",
+  "note": "Schedule only. Lines are a consensus snapshot, not a lean. Friday Packet locks the 15.",
+  "locked": false,
   "games": [
     {
-      "id": "nfl-w4-pit-cle",
-      "date": "2026-10-01",
+      "id": "nfl-w5-tb-dal",
+      "date": "2026-10-08",
       "kick": "Thu 8:15 ET",
       "tv": "Prime",
-      "away": "Pittsburgh",
-      "home": "Cleveland",
-      "spreadTeam": "Pittsburgh",
-      "spread": -2.5,
-      "total": 38.5,
-      "note": "Final CLE 27\u201324. After Dark Pass."
+      "away": "Tampa Bay",
+      "home": "Dallas",
+      "spreadTeam": "Dallas",
+      "spread": -9.5,
+      "total": 47.5
     },
     {
-      "id": "nfl-w4-ind-was",
-      "date": "2026-10-04",
+      "id": "nfl-w5-phi-jax",
+      "date": "2026-10-11",
       "kick": "Sun 9:30 ET",
       "tv": "NFLN",
-      "away": "Indianapolis",
-      "home": "Washington",
-      "spreadTeam": "Indianapolis",
-      "spread": -4,
-      "total": 47.5,
-      "note": "London",
-      "leans": [
-        {
-          "kind": "spread",
-          "side": "away",
-          "rank": 8,
-          "play": "Indianapolis -4",
-          "odds": "-110",
-          "units": 1
-        }
-      ],
-      "props": [
-        {
-          "play": "Josh Downs Over 44.5 rec yds",
-          "odds": "-115",
-          "type": "Player Prop",
-          "source": "Packet Prop"
-        }
-      ]
+      "away": "Philadelphia",
+      "home": "Jacksonville",
+      "spreadTeam": "Jacksonville",
+      "spread": -7,
+      "total": 42.5
     },
     {
-      "id": "nfl-w4-ne-buf",
-      "date": "2026-10-04",
-      "kick": "Sun 1:00 ET",
-      "tv": "CBS",
-      "away": "New England",
-      "home": "Buffalo",
-      "spreadTeam": "Buffalo",
-      "spread": -6.5,
-      "total": 48.5
-    },
-    {
-      "id": "nfl-w4-nyj-chi",
-      "date": "2026-10-04",
+      "id": "nfl-w5-cin-mia",
+      "date": "2026-10-11",
       "kick": "Sun 1:00 ET",
       "tv": "FOX",
-      "away": "NY Jets",
-      "home": "Chicago",
-      "spreadTeam": "Chicago",
-      "spread": -3.5,
-      "total": 42.5,
-      "leans": [
-        {
-          "kind": "spread",
-          "side": "away",
-          "rank": 1,
-          "play": "NY Jets +3.5",
-          "odds": "-110",
-          "units": 2
-        }
-      ]
-    },
-    {
-      "id": "nfl-w4-jax-cin",
-      "date": "2026-10-04",
-      "kick": "Sun 1:00 ET",
-      "tv": "CBS",
-      "away": "Jacksonville",
-      "home": "Cincinnati",
+      "away": "Cincinnati",
+      "home": "Miami",
       "spreadTeam": "Cincinnati",
-      "spread": -2.5,
-      "total": 51.5
+      "spread": -7,
+      "total": 42.5
     },
     {
-      "id": "nfl-w4-ari-nyg",
-      "date": "2026-10-04",
+      "id": "nfl-w5-lv-ne",
+      "date": "2026-10-11",
       "kick": "Sun 1:00 ET",
       "tv": "CBS",
-      "away": "Arizona",
-      "home": "NY Giants",
-      "spreadTeam": "Arizona",
+      "away": "Las Vegas",
+      "home": "New England",
+      "spreadTeam": "New England",
+      "spread": -3.5,
+      "total": 45.5
+    },
+    {
+      "id": "nfl-w5-min-no",
+      "date": "2026-10-11",
+      "kick": "Sun 1:00 ET",
+      "tv": "FOX",
+      "away": "Minnesota",
+      "home": "New Orleans",
+      "spreadTeam": "Minnesota",
+      "spread": -1.5,
+      "total": 42.5
+    },
+    {
+      "id": "nfl-w5-cle-nyj",
+      "date": "2026-10-11",
+      "kick": "Sun 1:00 ET",
+      "tv": "CBS",
+      "away": "Cleveland",
+      "home": "NY Jets",
+      "spreadTeam": "NY Jets",
+      "spread": -2.5,
+      "total": 39.5
+    },
+    {
+      "id": "nfl-w5-ind-pit",
+      "date": "2026-10-11",
+      "kick": "Sun 1:00 ET",
+      "tv": "CBS",
+      "away": "Indianapolis",
+      "home": "Pittsburgh",
+      "spreadTeam": "Pittsburgh",
       "spread": -2.5,
       "total": 44.5
     },
     {
-      "id": "nfl-w4-lar-phi",
-      "date": "2026-10-04",
-      "kick": "Sun 1:00 ET",
-      "tv": "FOX",
-      "away": "LA Rams",
-      "home": "Philadelphia",
-      "spreadTeam": "LA Rams",
-      "spread": -3.5,
-      "total": 42.5,
-      "leans": [
-        {
-          "kind": "spread",
-          "side": "home",
-          "rank": 10,
-          "play": "Philadelphia +3.5",
-          "odds": "-108",
-          "units": 1
-        }
-      ]
-    },
-    {
-      "id": "nfl-w4-gb-tb",
-      "date": "2026-10-04",
-      "kick": "Sun 1:00 ET",
-      "tv": "FOX",
-      "away": "Green Bay",
-      "home": "Tampa Bay",
-      "spreadTeam": "Green Bay",
-      "spread": -3,
-      "total": 38.5,
-      "note": "Gameday Sun: board moved -3.5 to -3. Friday -3.5 stays on the book.",
-      "leans": [
-        {
-          "kind": "spread",
-          "side": "away",
-          "rank": 7,
-          "play": "Green Bay -3.5",
-          "odds": "-112",
-          "units": 1
-        },
-        {
-          "kind": "spread",
-          "side": "away",
-          "rank": "G1",
-          "play": "Green Bay -3",
-          "odds": "-112",
-          "units": 1,
-          "source": "Gameday Sun"
-        }
-      ],
-      "props": [
-        {
-          "play": "Bucky Irving Over 58.5 rush yds",
-          "odds": "-110",
-          "type": "Player Prop",
-          "source": "Packet Prop"
-        },
-        {
-          "play": "Emeka Egbuka Under 52.5 rec yds",
-          "odds": "-110",
-          "type": "Player Prop",
-          "source": "Packet Prop"
-        }
-      ]
-    },
-    {
-      "id": "nfl-w4-ten-bal",
-      "date": "2026-10-04",
+      "id": "nfl-w5-hou-ten",
+      "date": "2026-10-11",
       "kick": "Sun 1:00 ET",
       "tv": "CBS",
-      "away": "Tennessee",
-      "home": "Baltimore",
-      "spreadTeam": "Baltimore",
-      "spread": -11.5,
-      "total": 43.5,
-      "leans": [
-        {
-          "kind": "total",
-          "side": "under",
-          "rank": 2,
-          "play": "Under 43.5",
-          "odds": "-110",
-          "units": 1
-        }
-      ]
+      "away": "Houston",
+      "home": "Tennessee",
+      "spreadTeam": "Houston",
+      "spread": -7,
+      "total": 39.5
     },
     {
-      "id": "nfl-w4-dal-hou",
-      "date": "2026-10-04",
+      "id": "nfl-w5-nyg-was",
+      "date": "2026-10-11",
       "kick": "Sun 1:00 ET",
       "tv": "FOX",
-      "away": "Dallas",
-      "home": "Houston",
-      "spreadTeam": "Houston",
-      "spread": -2.5,
-      "total": 47.5
+      "away": "NY Giants",
+      "home": "Washington",
+      "spreadTeam": "Washington",
+      "spread": -3,
+      "total": 43.5
     },
     {
-      "id": "nfl-w4-mia-min",
-      "date": "2026-10-04",
-      "kick": "Sun 4:05 ET",
+      "id": "nfl-w5-chi-gb",
+      "date": "2026-10-11",
+      "kick": "Sun 1:00 ET",
       "tv": "FOX",
-      "away": "Miami",
-      "home": "Minnesota",
-      "spreadTeam": "Minnesota",
-      "spread": -10.5,
-      "total": 38.5,
-      "props": [
-        {
-          "play": "Jordan Addison Over 49.5 rec yds",
-          "odds": "-115",
-          "type": "Player Prop",
-          "source": "Packet Prop"
-        }
-      ]
+      "away": "Chicago",
+      "home": "Green Bay",
+      "spreadTeam": "Chicago",
+      "spread": -3,
+      "total": 45.5
     },
     {
-      "id": "nfl-w4-den-sf",
-      "date": "2026-10-04",
-      "kick": "Sun 4:25 ET",
+      "id": "nfl-w5-den-lac",
+      "date": "2026-10-11",
+      "kick": "Sun 4:05 ET",
       "tv": "CBS",
       "away": "Denver",
-      "home": "San Francisco",
-      "spreadTeam": "San Francisco",
-      "spread": -2.5,
-      "total": 47.5
+      "home": "LA Chargers",
+      "spreadTeam": "Denver",
+      "spread": -3.5,
+      "total": 42.5
     },
     {
-      "id": "nfl-w4-kc-lv",
-      "date": "2026-10-04",
-      "kick": "Sun 4:25 ET",
-      "tv": "CBS",
-      "away": "Kansas City",
-      "home": "Las Vegas",
-      "spreadTeam": "Kansas City",
-      "spread": -4.5,
-      "total": 47.5,
-      "leans": [
-        {
-          "kind": "spread",
-          "side": "home",
-          "rank": 3,
-          "play": "Las Vegas +4.5",
-          "odds": "-108",
-          "units": 1
-        }
-      ]
-    },
-    {
-      "id": "nfl-w4-lac-sea",
-      "date": "2026-10-04",
+      "id": "nfl-w5-det-ari",
+      "date": "2026-10-11",
       "kick": "Sun 4:25 ET",
       "tv": "FOX",
-      "away": "LA Chargers",
+      "away": "Detroit",
+      "home": "Arizona",
+      "spreadTeam": "Detroit",
+      "spread": -4.5,
+      "total": 54.5
+    },
+    {
+      "id": "nfl-w5-sf-sea",
+      "date": "2026-10-11",
+      "kick": "Sun 4:25 ET",
+      "tv": "FOX",
+      "away": "San Francisco",
       "home": "Seattle",
       "spreadTeam": "Seattle",
-      "spread": -7,
-      "total": 42.5,
-      "leans": [
-        {
-          "kind": "spread",
-          "side": "away",
-          "rank": 6,
-          "play": "LA Chargers +7",
-          "odds": "-110",
-          "units": 1
-        }
-      ]
-    },
-    {
-      "id": "nfl-w4-det-car",
-      "date": "2026-10-04",
-      "kick": "Sun 8:20 ET",
-      "tv": "NBC",
-      "away": "Detroit",
-      "home": "Carolina",
-      "spreadTeam": "Detroit",
-      "spread": -3.5,
-      "total": 51.5,
-      "props": [
-        {
-          "play": "Jahmyr Gibbs Over 71.5 rush yds",
-          "odds": "-110",
-          "type": "Player Prop",
-          "source": "Packet Prop"
-        }
-      ]
-    },
-    {
-      "id": "nfl-w4-atl-no",
-      "date": "2026-10-05",
-      "kick": "Mon 8:15 ET",
-      "tv": "ESPN",
-      "away": "Atlanta",
-      "home": "New Orleans",
-      "spreadTeam": "New Orleans",
       "spread": -2.5,
       "total": 47.5
+    },
+    {
+      "id": "nfl-w5-bal-atl",
+      "date": "2026-10-11",
+      "kick": "Sun 8:20 ET",
+      "tv": "NBC",
+      "away": "Baltimore",
+      "home": "Atlanta",
+      "spreadTeam": "Baltimore",
+      "spread": -2.5,
+      "total": 45.5
+    },
+    {
+      "id": "nfl-w5-buf-lar",
+      "date": "2026-10-12",
+      "kick": "Mon 8:15 ET",
+      "tv": "ESPN",
+      "away": "Buffalo",
+      "home": "LA Rams",
+      "spreadTeam": "LA Rams",
+      "spread": -2.5,
+      "total": 54.5
     }
   ]
 }
