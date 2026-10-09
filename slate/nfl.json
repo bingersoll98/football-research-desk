@@ -2,9 +2,9 @@
   "league": "NFL",
   "week": 5,
   "label": "NFL Week 5",
-  "updated": "Tue Oct 6, 2026 \u00b7 schedule only",
-  "note": "Schedule only. Lines are a consensus snapshot, not a lean. Friday Packet locks the 15.",
-  "locked": false,
+  "updated": "Fri Oct 9, 2026 · Packet lock",
+  "note": "Lines locked Friday 2:00 CT with the Packet. Gold FRD PICK tags are this week’s published leans.",
+  "locked": true,
   "games": [
     {
       "id": "nfl-w5-tb-dal",
@@ -14,8 +14,9 @@
       "away": "Tampa Bay",
       "home": "Dallas",
       "spreadTeam": "Dallas",
-      "spread": -9.5,
-      "total": 47.5
+      "spread": -8.5,
+      "total": 48.5,
+      "note": "After Dark Pass. Flyer scratched. Off the card."
     },
     {
       "id": "nfl-w5-phi-jax",
@@ -25,8 +26,13 @@
       "away": "Philadelphia",
       "home": "Jacksonville",
       "spreadTeam": "Jacksonville",
-      "spread": -7,
-      "total": 42.5
+      "spread": -7.5,
+      "total": 41.5,
+      "leans": [{"kind": "spread", "side": "away"}],
+      "props": [
+        {"play": "Will Shipley Over 34.5 rush yds", "odds": "-110", "type": "Player Prop", "source": "Packet Prop"},
+        {"play": "Dontayvion Wicks Over 44.5 rec yds", "odds": "-110", "type": "Player Prop", "source": "Packet Prop"}
+      ]
     },
     {
       "id": "nfl-w5-cin-mia",
@@ -36,8 +42,8 @@
       "away": "Cincinnati",
       "home": "Miami",
       "spreadTeam": "Cincinnati",
-      "spread": -7,
-      "total": 42.5
+      "spread": -6.5,
+      "total": 43.5
     },
     {
       "id": "nfl-w5-lv-ne",
@@ -59,7 +65,7 @@
       "home": "New Orleans",
       "spreadTeam": "Minnesota",
       "spread": -1.5,
-      "total": 42.5
+      "total": 41.5
     },
     {
       "id": "nfl-w5-cle-nyj",
@@ -69,7 +75,7 @@
       "away": "Cleveland",
       "home": "NY Jets",
       "spreadTeam": "NY Jets",
-      "spread": -2.5,
+      "spread": -1.5,
       "total": 39.5
     },
     {
@@ -81,7 +87,8 @@
       "home": "Pittsburgh",
       "spreadTeam": "Pittsburgh",
       "spread": -2.5,
-      "total": 44.5
+      "total": 44,
+      "leans": [{"kind": "spread", "side": "away"}]
     },
     {
       "id": "nfl-w5-hou-ten",
@@ -91,8 +98,8 @@
       "away": "Houston",
       "home": "Tennessee",
       "spreadTeam": "Houston",
-      "spread": -7,
-      "total": 39.5
+      "spread": -7.5,
+      "total": 37.5
     },
     {
       "id": "nfl-w5-nyg-was",
@@ -102,8 +109,9 @@
       "away": "NY Giants",
       "home": "Washington",
       "spreadTeam": "Washington",
-      "spread": -3,
-      "total": 43.5
+      "spread": -4,
+      "total": 41.5,
+      "leans": [{"kind": "spread", "side": "away"}]
     },
     {
       "id": "nfl-w5-chi-gb",
@@ -113,8 +121,9 @@
       "away": "Chicago",
       "home": "Green Bay",
       "spreadTeam": "Chicago",
-      "spread": -3,
-      "total": 45.5
+      "spread": -1.5,
+      "total": 45.5,
+      "leans": [{"kind": "spread", "side": "home"}]
     },
     {
       "id": "nfl-w5-den-lac",
@@ -125,7 +134,7 @@
       "home": "LA Chargers",
       "spreadTeam": "Denver",
       "spread": -3.5,
-      "total": 42.5
+      "total": 41.5
     },
     {
       "id": "nfl-w5-det-ari",
@@ -135,8 +144,11 @@
       "away": "Detroit",
       "home": "Arizona",
       "spreadTeam": "Detroit",
-      "spread": -4.5,
-      "total": 54.5
+      "spread": -5.5,
+      "total": 54.5,
+      "props": [
+        {"play": "Jahmyr Gibbs Over 79.5 rush yds", "odds": "-110", "type": "Player Prop", "source": "Packet Prop"}
+      ]
     },
     {
       "id": "nfl-w5-sf-sea",
@@ -146,8 +158,9 @@
       "away": "San Francisco",
       "home": "Seattle",
       "spreadTeam": "Seattle",
-      "spread": -2.5,
-      "total": 47.5
+      "spread": -3,
+      "total": 46.5,
+      "leans": [{"kind": "spread", "side": "away"}]
     },
     {
       "id": "nfl-w5-bal-atl",
@@ -156,9 +169,14 @@
       "tv": "NBC",
       "away": "Baltimore",
       "home": "Atlanta",
-      "spreadTeam": "Baltimore",
-      "spread": -2.5,
-      "total": 45.5
+      "spreadTeam": "Atlanta",
+      "spread": -3.5,
+      "total": 43.5,
+      "leans": [{"kind": "spread", "side": "away"}],
+      "props": [
+        {"play": "Derrick Henry Over 72.5 rush yds", "odds": "-110", "type": "Player Prop", "source": "Packet Prop"},
+        {"play": "Bijan Robinson Over 74.5 rush yds", "odds": "-110", "type": "Player Prop", "source": "Packet Prop"}
+      ]
     },
     {
       "id": "nfl-w5-buf-lar",
@@ -168,7 +186,7 @@
       "away": "Buffalo",
       "home": "LA Rams",
       "spreadTeam": "LA Rams",
-      "spread": -2.5,
+      "spread": -3.5,
       "total": 54.5
     }
   ]
