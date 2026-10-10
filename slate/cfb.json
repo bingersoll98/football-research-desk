@@ -2,8 +2,8 @@
   "league": "CFB",
   "week": 6,
   "label": "CFB Week 6",
-  "updated": "Fri Oct 9, 2026 · Packet lock",
-  "note": "Lines locked Friday 2:00 CT with the Packet. Gold FRD PICK tags are this week’s published leans.",
+  "updated": "Sat Oct 10, 2026 · Gameday",
+  "note": "Lines locked Friday 2:00 CT with the Packet. Gold FRD PICK tags are this week’s published leans. Gameday Sat added Nebraska +8.5.",
   "locked": true,
   "games": [
     {
@@ -15,9 +15,10 @@
       "home": "Nebraska",
       "awayRank": 7,
       "spreadTeam": "Indiana",
-      "spread": -7.5,
+      "spread": -8.5,
       "total": 48.5,
-      "leans": [{"kind": "spread", "side": "home"}]
+      "leans": [{"kind": "spread", "side": "home"}],
+      "gameday": "+8.5"
     },
     {
       "id": "cfb-w6-miz-tamu",
@@ -90,8 +91,8 @@
       "awayRank": 21,
       "homeRank": 13,
       "spreadTeam": "Oregon",
-      "spread": -11.5,
-      "total": 59.5,
+      "spread": -10.5,
+      "total": 58.5,
       "leans": [{"kind": "spread", "side": "away"}]
     },
     {
