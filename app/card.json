@@ -1,7 +1,7 @@
 {
   "label": "NFL Week 6 · CFB Week 7 Packet",
-  "updated": "2026-10-16 14:16 CT",
-  "note": "Friday Packet locked. Best 10 + Top 5. Not betting advice. 21+.",
+  "updated": "2026-10-17 08:11 CT",
+  "note": "Friday Packet locked. Best 10 + Top 5. Gameday Sat added Tennessee +8. Not betting advice. 21+.",
   "plays": [
     {"id": "w6-1", "addable": true, "rank": 1, "play": "Carolina -3.5", "odds": -110, "units": 2, "type": "Spread", "league": "NFL", "game": "CAR @ PHI", "score": 9, "source": "Packet Best 10"},
     {"id": "w6-2", "addable": true, "rank": 2, "play": "Cleveland +3.5", "odds": -110, "units": 2, "type": "Spread", "league": "NFL", "game": "BAL @ CLE", "score": 8, "source": "Packet Best 10"},
@@ -17,6 +17,7 @@
     {"id": "w6-p2", "addable": true, "rank": 2, "play": "Tanner McKee Over 195.5 pass yds", "odds": -110, "units": 1, "type": "Player Prop", "league": "NFL", "game": "CAR @ PHI", "source": "Packet Prop"},
     {"id": "w6-p3", "addable": true, "rank": 3, "play": "Breece Hall Under 45.5 rush yds", "odds": -110, "units": 1, "type": "Player Prop", "league": "NFL", "game": "NYJ @ NE", "source": "Packet Prop"},
     {"id": "w6-p4", "addable": true, "rank": 4, "play": "Ladd McConkey Under 48.5 rec yds", "odds": -110, "units": 1, "type": "Player Prop", "league": "NFL", "game": "LAC @ KC", "source": "Packet Prop"},
-    {"id": "w6-p5", "addable": true, "rank": 5, "play": "Rico Dowdle Over 62.5 rush yds", "odds": -110, "units": 1, "type": "Player Prop", "league": "NFL", "game": "PIT @ TB", "source": "Packet Prop"}
+    {"id": "w6-p5", "addable": true, "rank": 5, "play": "Rico Dowdle Over 62.5 rush yds", "odds": -110, "units": 1, "type": "Player Prop", "league": "NFL", "game": "PIT @ TB", "source": "Packet Prop"},
+    {"id": "w6-gd1", "addable": true, "rank": null, "play": "Tennessee +8", "odds": -110, "units": 1, "type": "Spread", "league": "CFB", "game": "ALA @ TENN", "score": 5, "source": "Gameday Sat"}
   ]
 }
