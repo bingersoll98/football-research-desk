@@ -14,7 +14,7 @@
   "units",
   "posted_at"
  ],
- "x_post_id": null,
- "x_post_url": null,
+ "x_post_id": "2113738238091542648",
+ "x_post_url": "https://x.com/FBResearchDesk/status/2113738238091542648",
  "verify": "printf '%s' \"<canonical>\" | sha256sum ; compare to sha256 ; the commit time is GitHub's server time"
 }
