@@ -1,0 +1,20 @@
+{
+ "ticket": "NFL8-22",
+ "league": "NFL",
+ "game": "Chicago @ Seattle",
+ "kickoff": "2026-11-02T20:20-05:00",
+ "canonical": "{\"line\":29.5,\"odds\":-110,\"posted_at\":\"2026-11-03T00:56:55+00:00\",\"selection\":\"Cooper Kupp Over 29.5 receiving yards\",\"ticket\":\"NFL8-22\",\"units\":1.0}",
+ "sha256": "f22dc9cbc886150b2c3d5e32b90e5b39d5f099f0d943475f31b526834a46a9b1",
+ "hash": "sha256 of the UTF-8 canonical string",
+ "fields": [
+  "ticket",
+  "selection",
+  "line",
+  "odds",
+  "units",
+  "posted_at"
+ ],
+ "x_post_id": null,
+ "x_post_url": null,
+ "verify": "printf '%s' \"<canonical>\" | sha256sum ; compare to sha256 ; the commit time is GitHub's server time"
+}
